@@ -1,0 +1,110 @@
+# Syntax Coloring Map For Finder6M
+
+
+# Datatypes (KEYWORD1)
+
+Finder6M                                    KEYWORD1
+
+
+# Methods and Functions (KEYWORD2)
+
+Finder6M                                    KEYWORD2
+init                                        KEYWORD2
+getMachineId                                KEYWORD2
+getFirmwareVersion                          KEYWORD2
+setModbusAddress                            KEYWORD2
+setBaudrate                                 KEYWORD2
+setNoParity                                 KEYWORD2
+setOddParity                                KEYWORD2
+setEvenParity                               KEYWORD2
+getTVRatio                                  KEYWORD2
+setTVRatio                                  KEYWORD2
+getTARatio                                  KEYWORD2
+setTARatio                                  KEYWORD2
+getVoltageRMS100                            KEYWORD2
+getVoltageMax100                            KEYWORD2
+getVoltageMin100                            KEYWORD2
+getCurrentRMS100                            KEYWORD2
+getCurrentMax100                            KEYWORD2
+getCurrentMin100                            KEYWORD2
+getActivePower100                           KEYWORD2
+getReactivePower100                         KEYWORD2
+getApparentPower100                         KEYWORD2
+getPowerFactor100                           KEYWORD2
+getFrequency100                             KEYWORD2
+getTHD100                                   KEYWORD2
+getEnergy100                                KEYWORD2
+getEnergyPositive100                        KEYWORD2
+getEnergyNegative100                        KEYWORD2
+getStatus                                   KEYWORD2
+isVoltageOverRange                          KEYWORD2
+isVoltageUnderRange                         KEYWORD2
+isCurrentOverRange                          KEYWORD2
+isCurrentUnderRange                         KEYWORD2
+getFlagMeasurement                          KEYWORD2
+measureDirectCurrent                        KEYWORD2    
+measureAlternateCurrent                     KEYWORD2    
+enableEnergyStoring                         KEYWORD2
+disableEnergyStoring                        KEYWORD2    
+detectFrequencyOnVoltageChannel             KEYWORD2            
+detectFrequencyOnCurrentChannel             KEYWORD2            
+saveSettings                                KEYWORD2
+resetSettings                               KEYWORD2
+modbus6MRead16                              KEYWORD2
+modbus6MRead32                              KEYWORD2
+modbus6MWrite16                             KEYWORD2
+modbus6MWrite32                             KEYWORD2
+toFloat                                     KEYWORD2
+toUint32                                    KEYWORD2
+
+
+# Constants (LITERAL1)
+
+FINDER_6M_REG_MACHINE_ID                            LITERAL1
+FINDER_6M_REG_FIRMWARE_VERSION                      LITERAL1
+FINDER_6M_REG_MODBUS_ADDRESS                        LITERAL1
+FINDER_6M_REG_BAUDRATE                              LITERAL1
+FINDER_6M_REG_PARITY                                LITERAL1
+FINDER_6M_REG_FLAG_MEASUREMENT                      LITERAL1
+FINDER_6M_REG_TV_RATIO                              LITERAL1
+FINDER_6M_REG_TA_RATIO                              LITERAL1
+FINDER_6M_REG_STATUS                                LITERAL1
+FINDER_6M_REG_VOLTAGE_RMS_100                       LITERAL1
+FINDER_6M_REG_CURRENT_RMS_100                       LITERAL1
+FINDER_6M_REG_ACTIVE_POWER_100                      LITERAL1
+FINDER_6M_REG_REACTIVE_POWER_100                    LITERAL1
+FINDER_6M_REG_APPARENT_POWER_100                    LITERAL1
+FINDER_6M_REG_POWER_FACTOR_100                      LITERAL1
+FINDER_6M_REG_FREQUENCY_100                         LITERAL1
+FINDER_6M_REG_THD_100                               LITERAL1
+FINDER_6M_REG_ENERGY_100                            LITERAL1
+FINDER_6M_REG_ENERGY_POSITIVE_100                   LITERAL1
+FINDER_6M_REG_ENERGY_NEGATIVE_100                   LITERAL1
+FINDER_6M_REG_VOLTAGE_MAX_100                       LITERAL1
+FINDER_6M_REG_VOLTAGE_MIN_100                       LITERAL1
+FINDER_6M_REG_CURRENT_MAX_100                       LITERAL1
+FINDER_6M_REG_CURRENT_MIN_100                       LITERAL1
+FINDER_6M_REG_COMMAND                               LITERAL1
+FINDER_6M_BAUDRATE_CODE_1200                        LITERAL1
+FINDER_6M_BAUDRATE_CODE_2400                        LITERAL1
+FINDER_6M_BAUDRATE_CODE_4800                        LITERAL1
+FINDER_6M_BAUDRATE_CODE_9600                        LITERAL1
+FINDER_6M_BAUDRATE_CODE_19200                       LITERAL1
+FINDER_6M_BAUDRATE_CODE_38400                       LITERAL1
+FINDER_6M_BAUDRATE_CODE_57600                       LITERAL1
+FINDER_6M_BAUDRATE_CODE_115200                      LITERAL1
+FINDER_6M_PARITY_CODE_NO                            LITERAL1
+FINDER_6M_PARITY_CODE_ODD                           LITERAL1
+FINDER_6M_PARITY_CODE_EVEN                          LITERAL1
+FINDER_6M_COMMAND_SAVE                              LITERAL1
+FINDER_6M_COMMAND_RESET                             LITERAL1
+FINDER_6M_STATUS_BITMASK_FLASH_SETTINGS_ERROR       LITERAL1    
+FINDER_6M_STATUS_BITMASK_FLASH_CALIBRATION_ERROR    LITERAL1        
+FINDER_6M_STATUS_BITMASK_VOLTAGE_OVER_RANGE         LITERAL1
+FINDER_6M_STATUS_BITMASK_VOLTAGE_UNDER_RANGE        LITERAL1    
+FINDER_6M_STATUS_BITMASK_ZERO_CROSSING_DETECTING    LITERAL1        
+FINDER_6M_STATUS_BITMASK_ENERGY_STORING_ERROR       LITERAL1    
+FINDER_6M_STATUS_BITMASK_ENERGY_INIT_ERROR          LITERAL1
+FINDER_6M_STATUS_BITMASK_CURRENT_OVER_RANGE         LITERAL1
+FINDER_6M_STATUS_BITMASK_CURRENT_UNDER_RANGE        LITERAL1    
+INVALID_DATA                                        LITERAL1
