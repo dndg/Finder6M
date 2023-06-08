@@ -11,8 +11,7 @@ void setup()
     if (!f6m.init())
     {
         while (1)
-        {
-        }
+            ;
     }
 
     delay(2000);
@@ -38,16 +37,14 @@ void setup()
         {
             Serial.println("Error! Could not save settings.");
             while (1)
-            {
-            }
+                ;
         }
     }
     else
     {
         Serial.println("Error! Could not change settings.");
         while (1)
-        {
-        }
+            ;
     }
 }
 

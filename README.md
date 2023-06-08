@@ -22,8 +22,7 @@ void setup()
     if (!f7m.init())
     {
         while (1)
-        {
-        }
+            ;
     }
 }
 
@@ -43,8 +42,8 @@ When using this library keep in mind that:
 * The default baudrate is `38400`.
 * The default configuration is `8-N-1`.
 * When writing to registers you should always write one register at a time.
-* ModBus addressing on the Finder 6M starts from 0, so for example ModBus address 40006 must be accessed from the library as Holding
-Register number 5.
+* ModBus addressing on the Finder 6M starts from `0`, so for example ModBus address `40006` must be accessed from the library as Holding
+Register number `5`.
 
 ## Resources
 

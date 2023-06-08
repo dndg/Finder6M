@@ -10,8 +10,7 @@ void setup()
     if (!f6m.init())
     {
         while (1)
-        {
-        }
+            ;
     }
     f6m.measureAlternateCurrent(MODBUS_6M_ADDRESS);
     f6m.disableEnergyStoring(MODBUS_6M_ADDRESS);
