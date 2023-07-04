@@ -83,7 +83,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
+    bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
     /**
      * @param address Modbus id of the target device.
      *
@@ -103,32 +103,32 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean setModbusAddress(uint8_t newAddress, uint8_t oldAddress = 1);
+    bool setModbusAddress(uint8_t newAddress, uint8_t oldAddress = 1);
     /**
      * @param address Modbus id of the target device.
      * @param baudrate Baudrate that will be set.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean setBaudrate(uint8_t address, uint32_t baudrate);
+    bool setBaudrate(uint8_t address, uint32_t baudrate);
     /**
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean setNoParity(uint8_t address);
+    bool setNoParity(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean setOddParity(uint8_t address);
+    bool setOddParity(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean setEvenParity(uint8_t address);
+    bool setEvenParity(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
@@ -141,7 +141,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean setTVRatio(uint8_t address, float value);
+    bool setTVRatio(uint8_t address, float value);
     /**
      * @param address Modbus id of the target device.
      *
@@ -154,7 +154,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean setTARatio(uint8_t address, float value);
+    bool setTARatio(uint8_t address, float value);
     /**
      * @param address Modbus id of the target device.
      *
@@ -256,25 +256,25 @@ public:
      *
      * @return true if voltage is over range, false otherwise.
      */
-    boolean isVoltageOverRange(uint16_t status);
+    bool isVoltageOverRange(uint16_t status);
     /**
      * @param status Obtained with getStatus.
      *
      * @return true if voltage is under range, false otherwise.
      */
-    boolean isVoltageUnderRange(uint16_t status);
+    bool isVoltageUnderRange(uint16_t status);
     /**
      * @param status Obtained with getStatus.
      *
      * @return true if current is over range, false otherwise.
      */
-    boolean isCurrentOverRange(uint16_t status);
+    bool isCurrentOverRange(uint16_t status);
     /**
      * @param status Obtained with getStatus.
      *
      * @return true if current is under range, false otherwise.
      */
-    boolean isCurrentUnderRange(uint16_t status);
+    bool isCurrentUnderRange(uint16_t status);
     /**
      * @param address Modbus id of the target device.
      *
@@ -286,37 +286,37 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean measureDirectCurrent(uint8_t address);
+    bool measureDirectCurrent(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean measureAlternateCurrent(uint8_t address);
+    bool measureAlternateCurrent(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean enableEnergyStoring(uint8_t address);
+    bool enableEnergyStoring(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean disableEnergyStoring(uint8_t address);
+    bool disableEnergyStoring(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean detectFrequencyOnVoltageChannel(uint8_t address);
+    bool detectFrequencyOnVoltageChannel(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean detectFrequencyOnCurrentChannel(uint8_t address);
+    bool detectFrequencyOnCurrentChannel(uint8_t address);
     /**
      * Save the current settings on the flash memory of the device.
      *
@@ -324,7 +324,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean saveSettings(uint8_t address);
+    bool saveSettings(uint8_t address);
     /**
      * Reset the device completely.
      *
@@ -332,7 +332,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean resetSettings(uint8_t address);
+    bool resetSettings(uint8_t address);
     /**
      * Read a 16-bits register.
      *
@@ -353,7 +353,7 @@ public:
      *
      * @return The composed value or INVALID_DATA.
      */
-    uint32_t modbus6MRead32(uint8_t address, uint16_t reg, boolean swapped = false);
+    uint32_t modbus6MRead32(uint8_t address, uint16_t reg, bool swapped = false);
     /**
      * Write 8-bits or 16-bits values to a given register.
      *
@@ -363,7 +363,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite);
+    bool modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite);
     /**
      * Write 32-bits values to two consecutive 16-bits registers.
      *
@@ -374,7 +374,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, boolean swapped = false);
+    bool modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, bool swapped = false);
     /**
      * Safely convert 32-bits integer to float.
      */

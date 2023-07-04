@@ -19,7 +19,7 @@
 
 #include "Finder6M.h"
 
-boolean Finder6M::init(uint32_t baudrate, uint32_t serialParameters)
+bool Finder6M::init(uint32_t baudrate, uint32_t serialParameters)
 {
     uint32_t preDelay, postDelay, timeout;
     float bitDuration = 1.f / baudrate;
@@ -50,12 +50,12 @@ uint16_t Finder6M::getFirmwareVersion(uint8_t address)
     return modbus6MRead16(address, FINDER_6M_REG_FIRMWARE_VERSION);
 };
 
-boolean Finder6M::setModbusAddress(uint8_t newAddress, uint8_t oldAddress)
+bool Finder6M::setModbusAddress(uint8_t newAddress, uint8_t oldAddress)
 {
     return modbus6MWrite16(oldAddress, FINDER_6M_REG_MODBUS_ADDRESS, newAddress);
 };
 
-boolean Finder6M::setBaudrate(uint8_t address, uint32_t baudrate)
+bool Finder6M::setBaudrate(uint8_t address, uint32_t baudrate)
 {
     switch (baudrate)
     {
@@ -80,17 +80,17 @@ boolean Finder6M::setBaudrate(uint8_t address, uint32_t baudrate)
     }
 };
 
-boolean Finder6M::setNoParity(uint8_t address)
+bool Finder6M::setNoParity(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_NO);
 };
 
-boolean Finder6M::setOddParity(uint8_t address)
+bool Finder6M::setOddParity(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_ODD);
 };
 
-boolean Finder6M::setEvenParity(uint8_t address)
+bool Finder6M::setEvenParity(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_EVEN);
 };
@@ -100,7 +100,7 @@ float Finder6M::getTVRatio(uint8_t address)
     return toFloat(modbus6MRead32(address, FINDER_6M_REG_TV_RATIO));
 };
 
-boolean Finder6M::setTVRatio(uint8_t address, float value)
+bool Finder6M::setTVRatio(uint8_t address, float value)
 {
     return modbus6MWrite32(address, FINDER_6M_REG_TV_RATIO, toUint32(value));
 };
@@ -110,7 +110,7 @@ float Finder6M::getTARatio(uint8_t address)
     return toFloat(modbus6MRead32(address, FINDER_6M_REG_TA_RATIO));
 };
 
-boolean Finder6M::setTARatio(uint8_t address, float value)
+bool Finder6M::setTARatio(uint8_t address, float value)
 {
     return modbus6MWrite32(address, FINDER_6M_REG_TA_RATIO, toUint32(value));
 };
@@ -195,22 +195,22 @@ uint16_t Finder6M::getStatus(uint8_t address)
     return modbus6MRead16(address, FINDER_6M_REG_STATUS);
 };
 
-boolean Finder6M::isVoltageOverRange(uint16_t status)
+bool Finder6M::isVoltageOverRange(uint16_t status)
 {
     return (status & FINDER_6M_STATUS_BITMASK_VOLTAGE_OVER_RANGE) >> 2;
 };
 
-boolean Finder6M::isVoltageUnderRange(uint16_t status)
+bool Finder6M::isVoltageUnderRange(uint16_t status)
 {
     return (status & FINDER_6M_STATUS_BITMASK_VOLTAGE_UNDER_RANGE) >> 3;
 };
 
-boolean Finder6M::isCurrentOverRange(uint16_t status)
+bool Finder6M::isCurrentOverRange(uint16_t status)
 {
     return (status & FINDER_6M_STATUS_BITMASK_CURRENT_OVER_RANGE) >> 13;
 };
 
-boolean Finder6M::isCurrentUnderRange(uint16_t status)
+bool Finder6M::isCurrentUnderRange(uint16_t status)
 {
     return (status & FINDER_6M_STATUS_BITMASK_CURRENT_UNDER_RANGE) >> 14;
 };
@@ -220,42 +220,42 @@ uint16_t Finder6M::getFlagMeasurement(uint8_t address)
     return modbus6MRead16(address, FINDER_6M_REG_FLAG_MEASUREMENT);
 };
 
-boolean Finder6M::measureDirectCurrent(uint8_t address)
+bool Finder6M::measureDirectCurrent(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (getFlagMeasurement(address) | 0x0001));
 };
 
-boolean Finder6M::measureAlternateCurrent(uint8_t address)
+bool Finder6M::measureAlternateCurrent(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (getFlagMeasurement(address) & 0xFFFE));
 };
 
-boolean Finder6M::enableEnergyStoring(uint8_t address)
+bool Finder6M::enableEnergyStoring(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (getFlagMeasurement(address) | 0x0002));
 };
 
-boolean Finder6M::disableEnergyStoring(uint8_t address)
+bool Finder6M::disableEnergyStoring(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (getFlagMeasurement(address) & 0xFFFD));
 };
 
-boolean Finder6M::detectFrequencyOnVoltageChannel(uint8_t address)
+bool Finder6M::detectFrequencyOnVoltageChannel(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (getFlagMeasurement(address) | 0x0004));
 };
 
-boolean Finder6M::detectFrequencyOnCurrentChannel(uint8_t address)
+bool Finder6M::detectFrequencyOnCurrentChannel(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (getFlagMeasurement(address) & 0xFFFB));
 };
 
-boolean Finder6M::saveSettings(uint8_t address)
+bool Finder6M::saveSettings(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_SAVE);
 };
 
-boolean Finder6M::resetSettings(uint8_t address)
+bool Finder6M::resetSettings(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_RESET);
 };
@@ -280,7 +280,7 @@ uint32_t Finder6M::modbus6MRead16(uint8_t address, uint16_t reg)
     return INVALID_DATA;
 };
 
-uint32_t Finder6M::modbus6MRead32(uint8_t address, uint16_t reg, boolean swapped)
+uint32_t Finder6M::modbus6MRead32(uint8_t address, uint16_t reg, bool swapped)
 {
     uint8_t attempts = 3;
     while (attempts > 0)
@@ -308,7 +308,7 @@ uint32_t Finder6M::modbus6MRead32(uint8_t address, uint16_t reg, boolean swapped
     return INVALID_DATA;
 };
 
-boolean Finder6M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
+bool Finder6M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
 {
     uint8_t attempts = 3;
     while (attempts > 0)
@@ -326,9 +326,9 @@ boolean Finder6M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrit
     return false;
 };
 
-boolean Finder6M::modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, boolean swapped)
+bool Finder6M::modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, bool swapped)
 {
-    boolean okWrite1, okWrite2;
+    bool okWrite1, okWrite2;
     uint8_t attempts = 3;
     while (attempts > 0)
     {
