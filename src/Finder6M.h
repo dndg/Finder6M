@@ -16,6 +16,8 @@
 #ifndef _FINDER_6_M_H_INCLUDED
 #define _FINDER_6_M_H_INCLUDED
 
+#include <ArduinoRS485.h>
+
 constexpr int FINDER_6M_REG_MACHINE_ID = 0;            // Machine ID
 constexpr int FINDER_6M_REG_FIRMWARE_VERSION = 1;      // Firmware version
 constexpr int FINDER_6M_REG_MODBUS_ADDRESS = 2;        // Modbus Address
