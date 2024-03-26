@@ -1,7 +1,7 @@
 #include <Finder6M.h>
 
 Finder6M f6m;
-constexpr uint8_t MODBUS_6M_ADDRESS = 3;
+constexpr uint8_t MODBUS_6M_ADDRESS = 1;
 
 void setup()
 {
@@ -31,31 +31,31 @@ void loop()
     float taRatio = f6m.getTARatio(MODBUS_6M_ADDRESS);
     printFloat("Current transformer ratio", taRatio);
 
-    // Energy measurements in hundredths
-    int32_t energy100 = f6m.getEnergy100(MODBUS_6M_ADDRESS);
-    printInt("Energy in kWh/100", energy100);
-    int32_t posEnergy100 = f6m.getEnergyPositive100(MODBUS_6M_ADDRESS);
-    printInt("Positive energy in kWh/100", posEnergy100);
-    int32_t negEnergy100 = f6m.getEnergyNegative100(MODBUS_6M_ADDRESS);
-    printInt("Negative energy in kWh/100", negEnergy100);
+    // Energy measurements
+    double energy = f6m.getEnergy(MODBUS_6M_ADDRESS);
+    printMeasurement("Energy in kWh", energy);
+    double posEnergy = f6m.getEnergyPositive(MODBUS_6M_ADDRESS);
+    printMeasurement("Positive energy in kWh", posEnergy);
+    double negEnergy = f6m.getEnergyNegative(MODBUS_6M_ADDRESS);
+    printMeasurement("Negative energy in kWh", negEnergy);
 
-    // Other measurements in hundredths
-    int32_t voltageRMS100 = f6m.getVoltageRMS100(MODBUS_6M_ADDRESS);
-    printInt("Voltage RMS in V/100", voltageRMS100);
-    int32_t currentRMS100 = f6m.getCurrentRMS100(MODBUS_6M_ADDRESS);
-    printInt("Current RMS in mA/100", currentRMS100);
-    int32_t activePower100 = f6m.getActivePower100(MODBUS_6M_ADDRESS);
-    printInt("Active Power in W/100", activePower100);
-    int32_t reactivePower100 = f6m.getReactivePower100(MODBUS_6M_ADDRESS);
-    printInt("Reactive Power in var/100", reactivePower100);
-    int32_t apparentPower100 = f6m.getApparentPower100(MODBUS_6M_ADDRESS);
-    printInt("Apparent Power in VA/100", apparentPower100);
-    int32_t powerFactor100 = f6m.getPowerFactor100(MODBUS_6M_ADDRESS);
-    printInt("Power factor in hundredths", powerFactor100);
-    int32_t frequency100 = f6m.getFrequency100(MODBUS_6M_ADDRESS);
-    printInt("Frequency in Hz/100", frequency100);
-    int32_t thd100 = f6m.getTHD100(MODBUS_6M_ADDRESS);
-    printInt("THD in hundredths", thd100);
+    // Other measurements
+    double voltageRMS = f6m.getVoltageRMS(MODBUS_6M_ADDRESS);
+    printMeasurement("Voltage RMS in V", voltageRMS);
+    double currentRMS = f6m.getCurrentRMS(MODBUS_6M_ADDRESS);
+    printMeasurement("Current RMS in mA", currentRMS);
+    double activePower = f6m.getActivePower(MODBUS_6M_ADDRESS);
+    printMeasurement("Active Power in W", activePower);
+    double reactivePower = f6m.getReactivePower(MODBUS_6M_ADDRESS);
+    printMeasurement("Reactive Power in var", reactivePower);
+    double apparentPower = f6m.getApparentPower(MODBUS_6M_ADDRESS);
+    printMeasurement("Apparent Power in VA", apparentPower);
+    double powerFactor = f6m.getPowerFactor(MODBUS_6M_ADDRESS);
+    printMeasurement("Power factor", powerFactor);
+    double frequency = f6m.getFrequency(MODBUS_6M_ADDRESS);
+    printMeasurement("Frequency in Hz", frequency);
+    double thd = f6m.getTHD(MODBUS_6M_ADDRESS);
+    printMeasurement("THD", thd);
 
     // Status
     uint16_t status = f6m.getStatus(MODBUS_6M_ADDRESS);
@@ -67,9 +67,9 @@ void printFloat(String label, float n)
     Serial.println("   " + label + " = " + (f6m.toUint32(n) != INVALID_DATA ? String(n) : String("read error!")));
 };
 
-void printInt(String label, int32_t n)
+void printMeasurement(String label, double n)
 {
-    Serial.println("   " + label + " = " + (n != INVALID_DATA ? String(n) : String("read error!")));
+    Serial.println("   " + label + " = " + (n != (INVALID_DATA / 100.0) ? String(n) : String("read error!")));
 };
 
 void printStatus(uint16_t status)
