@@ -160,55 +160,55 @@ public:
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Voltage RMS measurement in hundredths (V/100).
+     * @return The Voltage RMS measurement in V hundredths.
      */
     int32_t getVoltageRMS100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Max Voltage RMS in hundredths (V/100).
+     * @return The Max Voltage RMS in V hundredths.
      */
     int32_t getVoltageMax100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Min Voltage RMS in hundredths (V/100).
+     * @return The Min Voltage RMS in V hundredths.
      */
     int32_t getVoltageMin100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Current RMS measurement in hundredths (mA/100).
+     * @return The Current RMS measurement in mA hundredths.
      */
     int32_t getCurrentRMS100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Max Current RMS in hundredths (mA/100).
+     * @return The Max Current RMS in mA hundredths.
      */
     int32_t getCurrentMax100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Min Current RMS in hundredths (mA/100).
+     * @return The Min Current RMS in mA hundredths.
      */
     int32_t getCurrentMin100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Active Power measurement in hundredths (W/100).
+     * @return The Active Power measurement in W hundredths.
      */
     int32_t getActivePower100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Reactive Power measurement in hundredths (var/100).
+     * @return The Reactive Power measurement in var hundredths.
      */
     int32_t getReactivePower100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Apparent Power measurement in hundredths (VA/100).
+     * @return The Apparent Power measurement in VA hundredths.
      */
     int32_t getApparentPower100(uint8_t address);
     /**
@@ -220,7 +220,7 @@ public:
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The frequency measurement in hundredths (Hz/100).
+     * @return The frequency measurement in Hz hundredths.
      */
     int32_t getFrequency100(uint8_t address);
     /**
@@ -232,21 +232,111 @@ public:
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The energy measurement in hundredths (KWh/100).
+     * @return The energy measurement in KWh hundredths.
      */
     int32_t getEnergy100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The positive energy measurement in hundredths (KWh/100).
+     * @return The positive energy measurement in KWh hundredths.
      */
     int32_t getEnergyPositive100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The megative energy measurement in hundredths (KWh/100).
+     * @return The negative energy measurement in KWh hundredths.
      */
     int32_t getEnergyNegative100(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Voltage RMS measurement (V).
+     */
+    double getVoltageRMS(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Max Voltage RMS (V).
+     */
+    double getVoltageMax(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Min Voltage RMS (V).
+     */
+    double getVoltageMin(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Current RMS measurement (mA).
+     */
+    double getCurrentRMS(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Max Current RMS (mA).
+     */
+    double getCurrentMax(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Min Current RMS (mA).
+     */
+    double getCurrentMin(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Active Power measurement (W).
+     */
+    double getActivePower(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Reactive Power measurement (var).
+     */
+    double getReactivePower(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The Apparent Power measurement (VA).
+     */
+    double getApparentPower(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The power factor measurement.
+     */
+    double getPowerFactor(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The frequency measurement (Hz).
+     */
+    double getFrequency(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The total harmonic distortion (THD) measurement.
+     */
+    double getTHD(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The energy measurement (KWh).
+     */
+    double getEnergy(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The positive energy measurement (KWh).
+     */
+    double getEnergyPositive(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The negative energy measurement in hundredths (KWh).
+     */
+    double getEnergyNegative(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *

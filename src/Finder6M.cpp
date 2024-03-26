@@ -189,6 +189,66 @@ int32_t Finder6M::getEnergyNegative100(uint8_t address)
     return modbus6MRead32(address, FINDER_6M_REG_ENERGY_NEGATIVE_100);
 };
 
+double Finder6M::getVoltageRMS(uint8_t address) {
+    return getVoltageRMS100(address) / 100.0;
+}
+
+double Finder6M::getVoltageMax(uint8_t address) {
+    return getVoltageMax100(address) / 100.0;
+}
+
+double Finder6M::getVoltageMin(uint8_t address) {
+    return getVoltageMin100(address) / 100.0;
+}
+
+double Finder6M::getCurrentRMS(uint8_t address) {
+    return getCurrentRMS100(address) / 100.0;
+}
+
+double Finder6M::getCurrentMax(uint8_t address) {
+    return getCurrentMax100(address) / 100.0;
+}
+
+double Finder6M::getCurrentMin(uint8_t address) {
+    return getCurrentMin100(address) / 100.0;
+}
+
+double Finder6M::getActivePower(uint8_t address) {
+    return getActivePower100(address) / 100.0;
+}
+
+double Finder6M::getReactivePower(uint8_t address) {
+    return getReactivePower100(address) / 100.0;
+}
+
+double Finder6M::getApparentPower(uint8_t address) {
+    return getApparentPower100(address) / 100.0;
+}
+
+double Finder6M::getPowerFactor(uint8_t address) {
+    return getPowerFactor100(address) / 100.0;
+}
+
+double Finder6M::getFrequency(uint8_t address) {
+    return getFrequency100(address) / 100.0;
+}
+
+double Finder6M::getTHD(uint8_t address) {
+    return getTHD100(address) / 100.0;
+}
+
+double Finder6M::getEnergy(uint8_t address) {
+    return getEnergy100(address) / 100.0;
+}
+
+double Finder6M::getEnergyPositive(uint8_t address) {
+    return getEnergyPositive100(address) / 100.0;
+}
+
+double Finder6M::getEnergyNegative(uint8_t address) {
+    return getEnergyNegative100(address) / 100.0;
+}
+
 uint16_t Finder6M::getStatus(uint8_t address)
 {
     return modbus6MRead16(address, FINDER_6M_REG_STATUS);
