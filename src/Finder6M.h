@@ -18,31 +18,33 @@
 
 #include <ArduinoRS485.h>
 
-constexpr int FINDER_6M_REG_MACHINE_ID = 0;            // Machine ID
-constexpr int FINDER_6M_REG_FIRMWARE_VERSION = 1;      // Firmware version
-constexpr int FINDER_6M_REG_MODBUS_ADDRESS = 2;        // Modbus Address
-constexpr int FINDER_6M_REG_BAUDRATE = 4;              // Baudrate
-constexpr int FINDER_6M_REG_PARITY = 5;                // Parity
-constexpr int FINDER_6M_REG_FLAG_MEASUREMENT = 7;      // Flag Measurement
-constexpr int FINDER_6M_REG_TV_RATIO = 8;              // Voltage transformer ratio
-constexpr int FINDER_6M_REG_TA_RATIO = 10;             // Current transformer ratio
-constexpr int FINDER_6M_REG_STATUS = 191;              // Status
-constexpr int FINDER_6M_REG_VOLTAGE_RMS_100 = 192;     // Voltage RMS in hundredths
-constexpr int FINDER_6M_REG_CURRENT_RMS_100 = 194;     // Current RMS in hundredths
-constexpr int FINDER_6M_REG_ACTIVE_POWER_100 = 196;    // Active Power (P) in hundredths
-constexpr int FINDER_6M_REG_REACTIVE_POWER_100 = 198;  // Reactive Power (Q) in hundredths
-constexpr int FINDER_6M_REG_APPARENT_POWER_100 = 200;  // Apparent Power (S) in hundredths
-constexpr int FINDER_6M_REG_POWER_FACTOR_100 = 202;    // Power factor in hundredths
-constexpr int FINDER_6M_REG_FREQUENCY_100 = 204;       // Frequency in hundredths
-constexpr int FINDER_6M_REG_THD_100 = 206;             // Total harmonic distortion (THD) in hundredths
-constexpr int FINDER_6M_REG_ENERGY_100 = 208;          // Total Energy in hundredths
-constexpr int FINDER_6M_REG_ENERGY_POSITIVE_100 = 210; // Positive Energy in hundredths
-constexpr int FINDER_6M_REG_ENERGY_NEGATIVE_100 = 212; // Negative Energy in hundredths
-constexpr int FINDER_6M_REG_VOLTAGE_MAX_100 = 218;     // Max Voltage RMS in hundredths
-constexpr int FINDER_6M_REG_VOLTAGE_MIN_100 = 220;     // Min Voltage RMS in hundredths
-constexpr int FINDER_6M_REG_CURRENT_MAX_100 = 222;     // Max Current RMS in hundredths
-constexpr int FINDER_6M_REG_CURRENT_MIN_100 = 224;     // Min Current RMS in hundredths
-constexpr int FINDER_6M_REG_COMMAND = 251;             // Command register
+constexpr int FINDER_6M_REG_MACHINE_ID = 0;                       // Machine ID
+constexpr int FINDER_6M_REG_FIRMWARE_VERSION = 1;                 // Firmware version
+constexpr int FINDER_6M_REG_MODBUS_ADDRESS = 2;                   // Modbus Address
+constexpr int FINDER_6M_REG_BAUDRATE = 4;                         // Baudrate
+constexpr int FINDER_6M_REG_PARITY = 5;                           // Parity
+constexpr int FINDER_6M_REG_FLAG_MEASUREMENT = 7;                 // Flag Measurement
+constexpr int FINDER_6M_REG_TV_RATIO = 8;                         // Voltage transformer ratio
+constexpr int FINDER_6M_REG_TA_RATIO = 10;                        // Current transformer ratio
+constexpr int FINDER_6M_REG_STATUS = 191;                         // Status
+constexpr int FINDER_6M_REG_VOLTAGE_RMS_100 = 192;                // Voltage RMS in hundredths
+constexpr int FINDER_6M_REG_CURRENT_RMS_100 = 194;                // Current RMS in hundredths
+constexpr int FINDER_6M_REG_ACTIVE_POWER_100 = 196;               // Active Power (P) in hundredths
+constexpr int FINDER_6M_REG_REACTIVE_POWER_100 = 198;             // Reactive Power (Q) in hundredths
+constexpr int FINDER_6M_REG_APPARENT_POWER_100 = 200;             // Apparent Power (S) in hundredths
+constexpr int FINDER_6M_REG_POWER_FACTOR_100 = 202;               // Power factor in hundredths
+constexpr int FINDER_6M_REG_FREQUENCY_100 = 204;                  // Frequency in hundredths
+constexpr int FINDER_6M_REG_THD_100 = 206;                        // Total harmonic distortion (THD) in hundredths
+constexpr int FINDER_6M_REG_ENERGY_100 = 208;                     // Total Energy in hundredths
+constexpr int FINDER_6M_REG_ENERGY_POSITIVE_100 = 210;            // Positive Energy in hundredths
+constexpr int FINDER_6M_REG_ENERGY_NEGATIVE_100 = 212;            // Negative Energy in hundredths
+constexpr int FINDER_6M_REG_INSTANTANEOUS_VOLTAGE_PEAK_100 = 214; // Instantaneous Voltage Peak in hundredths
+constexpr int FINDER_6M_REG_INSTANTANEOUS_CURRENT_PEAK_100 = 216; // Instantaneous Current Peak in hundredths
+constexpr int FINDER_6M_REG_VOLTAGE_MAX_100 = 218;                // Max Voltage RMS in hundredths
+constexpr int FINDER_6M_REG_VOLTAGE_MIN_100 = 220;                // Min Voltage RMS in hundredths
+constexpr int FINDER_6M_REG_CURRENT_MAX_100 = 222;                // Max Current RMS in hundredths
+constexpr int FINDER_6M_REG_CURRENT_MIN_100 = 224;                // Min Current RMS in hundredths
+constexpr int FINDER_6M_REG_COMMAND = 251;                        // Command register
 
 constexpr int FINDER_6M_BAUDRATE_CODE_1200 = 0;   // Indicates Baudarate of 1200
 constexpr int FINDER_6M_BAUDRATE_CODE_2400 = 1;   // Indicates Baudarate of 2400
@@ -250,6 +252,18 @@ public:
     /**
      * @param address Modbus id of the target device.
      *
+     * @return The instantaneous voltage peak in V hundredths.
+     */
+    int32_t getInstantaneousVoltagePeak100(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The instantaneous current peak in mA hundredths.
+     */
+    int32_t getInstantaneousCurrentPeak100(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
      * @return The Voltage RMS measurement (V).
      */
     double getVoltageRMS(uint8_t address);
@@ -334,9 +348,21 @@ public:
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The negative energy measurement in hundredths (KWh).
+     * @return The negative energy measurement (KWh).
      */
     double getEnergyNegative(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The instantaneous voltage peak (V).
+     */
+    double getInstantaneousVoltagePeak(uint8_t address);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return The instantaneous current peak (mA).
+     */
+    double getInstantaneousCurrentPeak(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
