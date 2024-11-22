@@ -349,7 +349,7 @@ bool Finder6M::saveSettings(uint8_t address)
     return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_SAVE);
 };
 
-bool Finder6M::resetSettings(uint8_t address)
+bool Finder6M::reset(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_RESET);
 };

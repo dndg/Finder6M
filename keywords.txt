@@ -49,7 +49,7 @@ disableEnergyStoring                        KEYWORD2
 detectFrequencyOnVoltageChannel             KEYWORD2            
 detectFrequencyOnCurrentChannel             KEYWORD2            
 saveSettings                                KEYWORD2
-resetSettings                               KEYWORD2
+reset                                       KEYWORD2
 modbus6MRead16                              KEYWORD2
 modbus6MRead32                              KEYWORD2
 modbus6MWrite16                             KEYWORD2

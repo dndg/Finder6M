@@ -444,13 +444,13 @@ public:
      */
     bool saveSettings(uint8_t address);
     /**
-     * Reset the device completely.
+     * Reset the device completely. This does not reset modbus address and baudrate.
      *
      * @param address Modbus id of the target device.
      *
      * @return true in case of success, false otherwise.
      */
-    bool resetSettings(uint8_t address);
+    bool reset(uint8_t address);
     /**
      * Read a 16-bits register.
      *
