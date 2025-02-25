@@ -17,6 +17,7 @@
 #define _FINDER_6_M_H_INCLUDED
 
 #include <ArduinoRS485.h>
+#include "Finder6MMeasure.h"
 
 constexpr int FINDER_6M_REG_MACHINE_ID = 0;                       // Machine ID
 constexpr int FINDER_6M_REG_FIRMWARE_VERSION = 1;                 // Firmware version
@@ -90,16 +91,18 @@ public:
     bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
     /**
      * @param address Modbus id of the target device.
+     * @param value Pointer to the variable that will store the output value.
      *
-     * @return The machine ID of the device.
+     * @return true in case of success, false otherwise.
      */
-    uint16_t getMachineId(uint8_t address);
+    bool getMachineId(uint8_t address, uint16_t *value);
     /**
      * @param address Modbus id of the target device.
+     * @param value Pointer to the variable that will store the output value.
      *
-     * @return The firmware version of the device.
+     * @return true in case of success, false otherwise.
      */
-    uint16_t getFirmwareVersion(uint8_t address);
+    bool getFirmwareVersion(uint8_t address, uint16_t *value);
     /**
      * @param newAddress Modbus id that will be assigned to the target device.
      * @param oldAddress Current id of the target device. If none is specified
@@ -136,9 +139,10 @@ public:
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Voltage transformer ratio.
+     * @return A Finder6MMeasure containing the Voltage
+     * transformer ratio.
      */
-    float getTVRatio(uint8_t address);
+    Finder6MMeasure getTVRatio(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      * @param value Value of the Voltage transformer ratio.
@@ -149,9 +153,10 @@ public:
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Current transformer ratio.
+     * @return A Finder6MMeasure containing the Current
+     * transformer ratio.
      */
-    float getTARatio(uint8_t address);
+    Finder6MMeasure getTARatio(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      * @param value Value of the Current transformer ratio.
@@ -162,213 +167,248 @@ public:
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Voltage RMS measurement in V hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Voltage RMS measurement in V hundredths.
      */
-    int32_t getVoltageRMS100(uint8_t address);
+    Finder6MMeasure getVoltageRMS100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Max Voltage RMS in V hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Max Voltage RMS in V hundredths.
      */
-    int32_t getVoltageMax100(uint8_t address);
+    Finder6MMeasure getVoltageMax100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Min Voltage RMS in V hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Min Voltage RMS in V hundredths.
      */
-    int32_t getVoltageMin100(uint8_t address);
+    Finder6MMeasure getVoltageMin100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Current RMS measurement in mA hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Current RMS measurement in mA hundredths.
      */
-    int32_t getCurrentRMS100(uint8_t address);
+    Finder6MMeasure getCurrentRMS100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Max Current RMS in mA hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Max Current RMS in mA hundredths.
      */
-    int32_t getCurrentMax100(uint8_t address);
+    Finder6MMeasure getCurrentMax100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Min Current RMS in mA hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Min Current RMS in mA hundredths.
      */
-    int32_t getCurrentMin100(uint8_t address);
+    Finder6MMeasure getCurrentMin100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Active Power measurement in W hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Active Power measurement in W hundredths.
      */
-    int32_t getActivePower100(uint8_t address);
+    Finder6MMeasure getActivePower100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Reactive Power measurement in var hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Reactive Power measurement in var hundredths.
      */
-    int32_t getReactivePower100(uint8_t address);
+    Finder6MMeasure getReactivePower100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Apparent Power measurement in VA hundredths.
+     * @return A Finder 6MMeasure containing the
+     * Apparent Power measurement in VA hundredths.
      */
-    int32_t getApparentPower100(uint8_t address);
+    Finder6MMeasure getApparentPower100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The power factor measurement in hundredths.
+     * @return A Finder 6MMeasure containing the
+     * power factor measurement in hundredths.
      */
-    int32_t getPowerFactor100(uint8_t address);
+    Finder6MMeasure getPowerFactor100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The frequency measurement in Hz hundredths.
+     * @return A Finder 6MMeasure containing the
+     * frequency measurement in Hz hundredths.
      */
-    int32_t getFrequency100(uint8_t address);
+    Finder6MMeasure getFrequency100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The total harmonic distortion (THD) measurement in hundredths.
+     * @return A Finder 6MMeasure containing the
+     * total harmonic distortion (THD) measurement in hundredths.
      */
-    int32_t getTHD100(uint8_t address);
+    Finder6MMeasure getTHD100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The energy measurement in KWh hundredths.
+     * @return A Finder 6MMeasure containing the
+     * energy measurement in KWh hundredths.
      */
-    int32_t getEnergy100(uint8_t address);
+    Finder6MMeasure getEnergy100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The positive energy measurement in KWh hundredths.
+     * @return A Finder 6MMeasure containing the
+     * positive energy measurement in KWh hundredths.
      */
-    int32_t getEnergyPositive100(uint8_t address);
+    Finder6MMeasure getEnergyPositive100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The negative energy measurement in KWh hundredths.
+     * @return A Finder 6MMeasure containing the
+     * negative energy measurement in KWh hundredths.
      */
-    int32_t getEnergyNegative100(uint8_t address);
+    Finder6MMeasure getEnergyNegative100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The instantaneous voltage peak in V hundredths.
+     * @return A Finder 6MMeasure containing the
+     * instantaneous voltage peak in V hundredths.
      */
-    int32_t getInstantaneousVoltagePeak100(uint8_t address);
+    Finder6MMeasure getInstantaneousVoltagePeak100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The instantaneous current peak in mA hundredths.
+     * @return A Finder 6MMeasure containing the
+     * instantaneous current peak in mA hundredths.
      */
-    int32_t getInstantaneousCurrentPeak100(uint8_t address);
+    Finder6MMeasure getInstantaneousCurrentPeak100(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Voltage RMS measurement (V).
+     * @return A Finder6MMeasure containing the
+     * Voltage RMS measurement (V).
      */
-    double getVoltageRMS(uint8_t address);
+    Finder6MMeasure getVoltageRMS(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Max Voltage RMS (V).
+     * @return A Finder6MMeasure containing the
+     * Max Voltage RMS (V).
      */
-    double getVoltageMax(uint8_t address);
+    Finder6MMeasure getVoltageMax(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Min Voltage RMS (V).
+     * @return A Finder6MMeasure containing the
+     * Min Voltage RMS (V).
      */
-    double getVoltageMin(uint8_t address);
+    Finder6MMeasure getVoltageMin(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Current RMS measurement (mA).
+     * @return A Finder6MMeasure containing the
+     * Current RMS measurement (mA).
      */
-    double getCurrentRMS(uint8_t address);
+    Finder6MMeasure getCurrentRMS(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Max Current RMS (mA).
+     * @return A Finder6MMeasure containing the
+     * Max Current RMS (mA).
      */
-    double getCurrentMax(uint8_t address);
+    Finder6MMeasure getCurrentMax(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Min Current RMS (mA).
+     * @return A Finder6MMeasure containing the
+     * Min Current RMS (mA).
      */
-    double getCurrentMin(uint8_t address);
+    Finder6MMeasure getCurrentMin(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Active Power measurement (W).
+     * @return A Finder6MMeasure containing the
+     * Active Power measurement (W).
      */
-    double getActivePower(uint8_t address);
+    Finder6MMeasure getActivePower(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Reactive Power measurement (var).
+     * @return A Finder6MMeasure containing the
+     * Reactive Power measurement (var).
      */
-    double getReactivePower(uint8_t address);
+    Finder6MMeasure getReactivePower(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The Apparent Power measurement (VA).
+     * @return A Finder6MMeasure containing the
+     * Apparent Power measurement (VA).
      */
-    double getApparentPower(uint8_t address);
+    Finder6MMeasure getApparentPower(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The power factor measurement.
+     * @return A Finder6MMeasure containing the
+     * power factor measurement.
      */
-    double getPowerFactor(uint8_t address);
+    Finder6MMeasure getPowerFactor(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The frequency measurement (Hz).
+     * @return A Finder6MMeasure containing the
+     * frequency measurement (Hz).
      */
-    double getFrequency(uint8_t address);
+    Finder6MMeasure getFrequency(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The total harmonic distortion (THD) measurement.
+     * @return A Finder6MMeasure containing the
+     * total harmonic distortion (THD) measurement.
      */
-    double getTHD(uint8_t address);
+    Finder6MMeasure getTHD(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The energy measurement (KWh).
+     * @return A Finder6MMeasure containing the
+     * energy measurement (KWh).
      */
-    double getEnergy(uint8_t address);
+    Finder6MMeasure getEnergy(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The positive energy measurement (KWh).
+     * @return A Finder6MMeasure containing the
+     * positive energy measurement (KWh).
      */
-    double getEnergyPositive(uint8_t address);
+    Finder6MMeasure getEnergyPositive(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The negative energy measurement (KWh).
+     * @return A Finder6MMeasure containing the
+     * negative energy measurement (KWh).
      */
-    double getEnergyNegative(uint8_t address);
+    Finder6MMeasure getEnergyNegative(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The instantaneous voltage peak (V).
+     * @return A Finder6MMeasure containing the
+     * instantaneous voltage peak (V).
      */
-    double getInstantaneousVoltagePeak(uint8_t address);
+    Finder6MMeasure getInstantaneousVoltagePeak(uint8_t address);
     /**
      * @param address Modbus id of the target device.
      *
-     * @return The instantaneous current peak (mA).
+     * @return A Finder6MMeasure containing the
+     * instantaneous current peak (mA).
      */
-    double getInstantaneousCurrentPeak(uint8_t address);
+    Finder6MMeasure getInstantaneousCurrentPeak(uint8_t address);
     /**
      * @param address Modbus id of the target device.
+     * @param value Pointer to the variable that will store the output value.
      *
-     * @return The status of the device.
+     * @return true in case of success, false otherwise.
      */
-    uint16_t getStatus(uint8_t address);
+    bool getStatus(uint8_t address, uint16_t *value);
     /**
      * @param status Obtained with getStatus.
      *
@@ -395,10 +435,11 @@ public:
     bool isCurrentUnderRange(uint16_t status);
     /**
      * @param address Modbus id of the target device.
+     * @param value Pointer to the variable that will store the output value.
      *
-     * @return The content of the Flag Measurement register of the device.
+     * @return true in case of success, false otherwise.
      */
-    uint16_t getFlagMeasurement(uint8_t address);
+    bool getFlagMeasurement(uint8_t address, uint16_t *value);
     /**
      * @param address Modbus id of the target device.
      *
@@ -456,10 +497,11 @@ public:
      *
      * @param addr Modbus id of the target device.
      * @param reg Start address of the register.
+     * @param value Pointer to the variable that will store the output value.
      *
-     * @return The read value or INVALID_DATA.
+     * @return True in case of success, false in case of error.
      */
-    uint32_t modbus6MRead16(uint8_t address, uint16_t reg);
+    bool modbus6MRead16(uint8_t address, uint16_t reg, uint16_t *value);
     /**
      * Read two consecutive 16-bits registers and compose them
      * into a single 32-bits value, by shifting the first value
@@ -467,11 +509,12 @@ public:
      *
      * @param addr Modbus id of the target device.
      * @param reg Start address of the register.
+     * @param value Pointer to the variable that will store the output value.
      * @param swapped true for MSW first, false for LSW first (default).
      *
-     * @return The composed value or INVALID_DATA.
+     * @return True in case of success, false in case of error.
      */
-    uint32_t modbus6MRead32(uint8_t address, uint16_t reg, bool swapped = false);
+    bool modbus6MRead32(uint8_t address, uint16_t reg, uint32_t *value, bool swapped = false);
     /**
      * Write 8-bits or 16-bits values to a given register.
      *
@@ -494,13 +537,21 @@ public:
      */
     bool modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, bool swapped = false);
     /**
-     * Safely convert 32-bits integer to float.
-     */
-    float toFloat(uint32_t data);
-    /**
      * Safely convert float to 32-bits integer.
      */
     uint32_t toUint32(float data);
+
+private:
+    /**
+     * @param value As unsigned 32-bits integer.
+     * @param type A type of Finder6MMeasure.
+     *
+     * @return Performs validation and returns a Finder6MMeasure.
+     *
+     * @warning The Measure contains an error code that indicates
+     * the result of the validation.
+     */
+    Finder6MMeasure generateMeasure(uint32_t value, uint8_t type, bool isError);
 };
 
 #endif

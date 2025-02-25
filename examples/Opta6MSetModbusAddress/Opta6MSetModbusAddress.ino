@@ -51,7 +51,18 @@ void setup()
 void loop()
 {
     Serial.print("On address " + String(MODBUS_6M_ADDRESS) + " Finder 6M.");
-    switch (f6m.getMachineId(MODBUS_6M_ADDRESS))
+
+    uint16_t id;
+    bool isOk = f6m.getMachineId(MODBUS_6M_ADDRESS, &id);
+
+    if (!isOk)
+    {
+        Serial.println("..read error!");
+        while (1)
+            ;
+    }
+
+    switch (id)
     {
     case 7:
         Serial.print("TA");
@@ -63,7 +74,10 @@ void loop()
         Serial.print("TB");
         break;
     }
-    Serial.println(" with firmware version " + String(f6m.getFirmwareVersion(MODBUS_6M_ADDRESS)));
+
+    uint16_t fw;
+    isOk = f6m.getFirmwareVersion(MODBUS_6M_ADDRESS, &fw);
+    Serial.println(" with firmware version " + (isOk ? String(fw) : "...read error!"));
 
     while (1)
         ;

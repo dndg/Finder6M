@@ -54,7 +54,6 @@ modbus6MRead16                              KEYWORD2
 modbus6MRead32                              KEYWORD2
 modbus6MWrite16                             KEYWORD2
 modbus6MWrite32                             KEYWORD2
-toFloat                                     KEYWORD2
 toUint32                                    KEYWORD2
 
 
