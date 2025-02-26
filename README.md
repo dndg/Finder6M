@@ -45,30 +45,60 @@ When using this library keep in mind that:
 address `40006` must be accessed from the library as Holding Register number
 `5`.
 
-### Versions
+## Breaking version update
 
 As signaled by the major version jump, version `2.0` of this library is a major
-update. This version adds the new type `Finder6MMeasure`, returned by most of
-the functions of the library.
+update. This version introduces the new type `Finder6MMeasure`, now returned by
+most of the functions of the library that previously returned `int32_t`,
+`float` or `double` values.
 
-When updating from version `1.x` to version `2.x`, it will likely be necessary
-to update the code of the sketches using this library. In particular, most
-functions now return either:
+The new class `Finder6MMeasure` allows you to:
 
-* `bool`: to notify the result of the read to the calling code. The read value
-  is stored in a variable, whose pointer was passed as parameter to the called
-  function.
-* `Finder6MMeasure`: this new class gives access to:
-  * The read value as `float`, using the function `toFloat()`.
-  * The read value as `int32_t`, using the function `toInt()`.
-  * The result of the read as `bool`, using the function `isError()`.
+* Get the read value as `float`, using the function `toFloat()`.
+* Get the read value as `int32_t`, using the function `toInt()`.
+* Get the result of the read as `bool`, using the function `isError()`.
 
-All [the example sketches](./examples/) use the latest version of the library,
-offering guidance on how to use the new `Finder6MMeasure` class.
+Additionally, some functions that previously returned `uint16_t` now return a
+`bool` and take a `uint16_t *` parameter.
 
-The full list of changed functions is available in the changelog of the version
-of the library `2.0`, so that you can easily verify if your sketch needs
-changes and how to update it. <!-- TODO: add link -->
+This means that when you update from version `1.x` to version `2.x`, you will
+likely need to update your sketches to reflect these changes. Below is the full
+list of the changed functions:
+
+* `getMachineId`, `getFirmwareVersion`, `getStatus`, `getFlagMeasurement`:
+  * Changed return type from `uint16_t` to `bool`. Returns `true` on success,
+    `false` otherwise.
+  * Added parameter `value` of type `uint16_t *`. Pointer to the variable where
+    the read value will be stored.
+* `getTARatio`, `getTVRatio`:
+  * Changed return type from `float` to `Finder6MMeasure`.
+* `getVoltageRMS100` , `getVoltageMax100` , `getVoltageMin100` ,
+  `getCurrentRMS100` , `getCurrentMax100` , `getCurrentMin100` ,
+  `getActivePower100` , `getReactivePower100` , `getApparentPower100` ,
+  `getPowerFactor100` , `getFrequency100` , `getTHD100` , `getEnergy100` ,
+  `getEnergyPositive100` , `getEnergyNegative100` ,
+  `getInstantaneousVoltagePeak100` , `getInstantaneousCurrentPeak100`:
+  * Changed return type from `int32_t` to `Finder6MMeasure`.
+* `getVoltageRMS` , `getVoltageMax` , `getVoltageMin` ,
+  `getCurrentRMS` , `getCurrentMax` , `getCurrentMin` ,
+  `getActivePower` , `getReactivePower` , `getApparentPower` ,
+  `getPowerFactor` , `getFrequency` , `getTHD` , `getEnergy` ,
+  `getEnergyPositive` , `getEnergyNegative` ,
+  `getInstantaneousVoltagePeak` , `getInstantaneousCurrentPeak`:
+  * Changed return type from `double` to `Finder6MMeasure`.
+* `modbus6MRead16`:
+  * Changed return type from `uint32_t` to `bool`. Returns `true` on success,
+    `false` otherwise.
+  * Added parameter `value` of type `uint16_t *`. Pointer to the variable where
+    the read value will be stored.
+* `modbus6MRead32`:
+  * Changed return type from `uint32_t` to `bool`. Returns `true` on success,
+    `false` otherwise.
+  * Added parameter `value` of type `uint32_t *`. Pointer to the variable where
+    the read value will be stored.
+
+All of [the example sketches](./examples/) use the latest version of the
+library, offering guidance on how to update your code.
 
 ## Resources
 
