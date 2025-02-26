@@ -18,7 +18,7 @@
 
 #include "Finder6M.h"
 
-bool Finder6M::init(uint32_t baudrate, uint32_t serialParameters)
+bool Finder6M::init(uint32_t baudrate, uint32_t serialParameters, uint32_t timeoutMs)
 {
     uint32_t preDelay, postDelay, timeout;
     float bitDuration = 1.f / baudrate;
@@ -32,6 +32,11 @@ bool Finder6M::init(uint32_t baudrate, uint32_t serialParameters)
     {
         preDelay = postDelay = 1750;
         timeout = 1000;
+    }
+
+    if (timeoutMs > 0)
+    {
+        timeout = timeoutMs;
     }
 
     RS485.setDelays(preDelay, postDelay);

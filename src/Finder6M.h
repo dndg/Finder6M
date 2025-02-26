@@ -85,10 +85,12 @@ public:
      *
      * @param baudrate Defaults to 38400, if not specified.
      * @param serialParameters Defaults to 8N1, if not specified.
+     * @param timeoutMs Timeout in ms, if not specified the function
+     * will internally use the best value according to Modbus specs.
      *
      * @return true in case of success, false otherwise.
      */
-    bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
+    bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1, uint32_t timeoutMs = 0);
     /**
      * @param address Modbus id of the target device.
      * @param value Pointer to the variable that will store the output value.
