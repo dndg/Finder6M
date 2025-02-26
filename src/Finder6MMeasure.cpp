@@ -27,13 +27,16 @@ int32_t Finder6MMeasure::toInt()
     {
         return static_cast<int32_t>(toFloat());
     }
+
+    return 0;
 };
 
 float Finder6MMeasure::toFloat()
 {
     if (_type == F6M_MEASURE_TYPE_INT)
     {
-        return static_cast<float>(_value);
+        int32_t v = reinterpret_cast<int32_t &>(_value);
+        return static_cast<float>(v);
     }
 
     if (_type == F6M_MEASURE_TYPE_FLOAT)
@@ -41,6 +44,8 @@ float Finder6MMeasure::toFloat()
         assert(sizeof(uint32_t) == sizeof(float));
         return reinterpret_cast<float &>(_value);
     }
+
+    return 0;
 };
 
 uint8_t Finder6MMeasure::getType()

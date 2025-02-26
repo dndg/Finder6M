@@ -7,13 +7,12 @@ void setup()
 {
     Serial.begin(38400);
 
-    if (!f6m.init(9600))
+    if (!f6m.init())
     {
         stop();
     }
 
     f6m.measureAlternateCurrent(MODBUS_6M_ADDRESS);
-    f6m.disableEnergyStoring(MODBUS_6M_ADDRESS);
     if (!f6m.saveSettings(MODBUS_6M_ADDRESS))
     {
         stop();
@@ -82,6 +81,8 @@ void loop()
     uint16_t status;
     bool res = f6m.getStatus(MODBUS_6M_ADDRESS, &status);
     printStatus(status);
+
+    delay(1000);
 }
 
 void printMeasure(String label, Finder6MMeasure m)
