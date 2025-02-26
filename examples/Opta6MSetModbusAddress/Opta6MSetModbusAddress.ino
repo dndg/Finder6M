@@ -6,12 +6,11 @@ constexpr uint8_t MODBUS_6M_ADDRESS = 3;
 
 void setup()
 {
-    Serial.begin(38400);
+    Serial.begin(9600);
 
     if (!f6m.init())
     {
-        while (1)
-            ;
+        stop();
     }
 
     delay(2000);
@@ -36,42 +35,38 @@ void setup()
         else
         {
             Serial.println("Error! Could not save settings.");
-            while (1)
-                ;
+            stop();
         }
     }
     else
     {
         Serial.println("Error! Could not change settings.");
-        while (1)
-            ;
+        stop();
     }
 }
 
 void loop()
 {
-    Serial.print("On address " + String(MODBUS_6M_ADDRESS) + " Finder 6M.");
+    Serial.print("On address " + String(MODBUS_6M_ADDRESS));
 
     uint16_t id;
     bool isOk = f6m.getMachineId(MODBUS_6M_ADDRESS, &id);
-
     if (!isOk)
     {
-        Serial.println("..read error!");
-        while (1)
-            ;
+        Serial.println("...read error!");
+        stop();
     }
 
     switch (id)
     {
     case 7:
-        Serial.print("TA");
+        Serial.print("Finder6M.TA");
         break;
     case 18:
-        Serial.print("TF");
+        Serial.print("Finder6M.TF");
         break;
     case 48:
-        Serial.print("TB");
+        Serial.print("Finder6M.TB");
         break;
     }
 
@@ -79,6 +74,11 @@ void loop()
     isOk = f6m.getFirmwareVersion(MODBUS_6M_ADDRESS, &fw);
     Serial.println(" with firmware version " + (isOk ? String(fw) : "...read error!"));
 
+    stop();
+};
+
+void stop()
+{
     while (1)
         ;
-};
+}
