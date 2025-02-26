@@ -4,7 +4,7 @@
 # Datatypes (KEYWORD1)
 
 Finder6M                                    KEYWORD1
-
+Finder6MMeasure                             KEYWORD1
 
 # Methods and Functions (KEYWORD2)
 
@@ -55,7 +55,13 @@ modbus6MRead32                              KEYWORD2
 modbus6MWrite16                             KEYWORD2
 modbus6MWrite32                             KEYWORD2
 toUint32                                    KEYWORD2
-
+generateMeasure                             KEYWORD2
+Finder6MMeasure                             KEYWORD2                     
+toInt                                       KEYWORD2                       
+toFloat                                     KEYWORD2                     
+getType                                     KEYWORD2                     
+isReadError                                 KEYWORD2                     
+getErrorCode                                KEYWORD2                        
 
 # Constants (LITERAL1)
 
@@ -107,3 +113,8 @@ FINDER_6M_STATUS_BITMASK_ENERGY_INIT_ERROR          LITERAL1
 FINDER_6M_STATUS_BITMASK_CURRENT_OVER_RANGE         LITERAL1
 FINDER_6M_STATUS_BITMASK_CURRENT_UNDER_RANGE        LITERAL1    
 INVALID_DATA                                        LITERAL1
+F6M_MEASURE_TYPE_INT                                LITERAL1
+F6M_MEASURE_TYPE_FLOAT                              LITERAL1
+F6M_MEASURE_ERROR_NONE                              LITERAL1
+F6M_MEASURE_ERROR_INVALID_READ                      LITERAL1
+

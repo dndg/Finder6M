@@ -16,22 +16,18 @@ The code below shows a basic example of how to use this library:
 #include <Finder6M.h>
 
 Finder6M f6m;
-constexpr uint8_t MODBUS_6M_ADDRESS = 3;
+constexpr uint8_t MODBUS_6M_ADDRESS = 1;
 
 void setup()
 {
     Serial.begin(38400);
-    if (!f7m.init())
-    {
-        while (1)
-            ;
-    }
+    f6m.init();
 }
 
 void loop()
 {
-    int32_t energy100 = f6m.getEnergy100(MODBUS_6M_ADDRESS);
-    Serial.println("Energy in kWh/100 " + String(energy100));
+    Finder6MMeasure energy = f6m.getEnergy(MODBUS_6M_ADDRESS);
+    Serial.println("Energy in kWh: " + String(energy.toFloat()));
 }
 ```
 
@@ -48,6 +44,31 @@ When using this library keep in mind that:
 * ModBus addressing on the Finder 6M starts from `0`, so for example ModBus
 address `40006` must be accessed from the library as Holding Register number
 `5`.
+
+### Versions
+
+As signaled by the major version jump, version `2.0` of this library is a major
+update. This version adds the new type `Finder6MMeasure`, returned by most of
+the functions of the library.
+
+When updating from version `1.x` to version `2.x`, it will likely be necessary
+to update the code of the sketches using this library. In particular, most
+functions now return either:
+
+* `bool`: to notify the result of the read to the calling code. The read value
+  is stored in a variable, whose pointer was passed as parameter to the called
+  function.
+* `Finder6MMeasure`: this new class gives access to:
+  * The read value as `float`, using the function `toFloat()`.
+  * The read value as `int32_t`, using the function `toInt()`.
+  * The result of the read as `bool`, using the function `isError()`.
+
+All [the example sketches](./examples/) use the latest version of the library,
+offering guidance on how to use the new `Finder6MMeasure` class.
+
+The full list of changed functions is available in the changelog of the version
+of the library `2.0`, so that you can easily verify if your sketch needs
+changes and how to update it. <!-- TODO: add link -->
 
 ## Resources
 
