@@ -44,14 +44,14 @@ bool Finder6M::init(uint32_t baudrate, uint32_t serialParameters, uint32_t timeo
     return ModbusRTUClient.begin(baudrate, serialParameters) == 1;
 };
 
-bool Finder6M::getMachineId(uint8_t address, uint16_t *value)
+bool Finder6M::getMachineId(uint8_t address, uint16_t *value, uint8_t attempts)
 {
-    return modbus6MRead16(address, FINDER_6M_REG_MACHINE_ID, value);
+    return modbus6MRead16(address, FINDER_6M_REG_MACHINE_ID, value, attempts);
 };
 
-bool Finder6M::getFirmwareVersion(uint8_t address, uint16_t *value)
+bool Finder6M::getFirmwareVersion(uint8_t address, uint16_t *value, uint8_t attempts)
 {
-    return modbus6MRead16(address, FINDER_6M_REG_FIRMWARE_VERSION, value);
+    return modbus6MRead16(address, FINDER_6M_REG_FIRMWARE_VERSION, value, attempts);
 };
 
 bool Finder6M::setModbusAddress(uint8_t newAddress, uint8_t oldAddress)
@@ -99,10 +99,10 @@ bool Finder6M::setEvenParity(uint8_t address)
     return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_EVEN);
 };
 
-Finder6MMeasure Finder6M::getTVRatio(uint8_t address)
+Finder6MMeasure Finder6M::getTVRatio(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_TV_RATIO, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_TV_RATIO, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, !isOk);
 };
 
@@ -111,10 +111,10 @@ bool Finder6M::setTVRatio(uint8_t address, float value)
     return modbus6MWrite32(address, FINDER_6M_REG_TV_RATIO, toUint32(value));
 };
 
-Finder6MMeasure Finder6M::getTARatio(uint8_t address)
+Finder6MMeasure Finder6M::getTARatio(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_TA_RATIO, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_TA_RATIO, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, !isOk);
 };
 
@@ -123,247 +123,247 @@ bool Finder6M::setTARatio(uint8_t address, float value)
     return modbus6MWrite32(address, FINDER_6M_REG_TA_RATIO, toUint32(value));
 };
 
-Finder6MMeasure Finder6M::getVoltageRMS100(uint8_t address)
+Finder6MMeasure Finder6M::getVoltageRMS100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_VOLTAGE_RMS_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_VOLTAGE_RMS_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getVoltageMax100(uint8_t address)
+Finder6MMeasure Finder6M::getVoltageMax100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_VOLTAGE_MAX_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_VOLTAGE_MAX_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getVoltageMin100(uint8_t address)
+Finder6MMeasure Finder6M::getVoltageMin100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_VOLTAGE_MIN_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_VOLTAGE_MIN_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getCurrentRMS100(uint8_t address)
+Finder6MMeasure Finder6M::getCurrentRMS100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_CURRENT_RMS_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_CURRENT_RMS_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getCurrentMax100(uint8_t address)
+Finder6MMeasure Finder6M::getCurrentMax100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_CURRENT_MAX_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_CURRENT_MAX_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getCurrentMin100(uint8_t address)
+Finder6MMeasure Finder6M::getCurrentMin100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_CURRENT_MIN_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_CURRENT_MIN_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getActivePower100(uint8_t address)
+Finder6MMeasure Finder6M::getActivePower100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ACTIVE_POWER_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ACTIVE_POWER_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getReactivePower100(uint8_t address)
+Finder6MMeasure Finder6M::getReactivePower100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_REACTIVE_POWER_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_REACTIVE_POWER_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getApparentPower100(uint8_t address)
+Finder6MMeasure Finder6M::getApparentPower100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_APPARENT_POWER_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_APPARENT_POWER_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getPowerFactor100(uint8_t address)
+Finder6MMeasure Finder6M::getPowerFactor100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_POWER_FACTOR_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_POWER_FACTOR_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getFrequency100(uint8_t address)
+Finder6MMeasure Finder6M::getFrequency100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_FREQUENCY_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_FREQUENCY_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getTHD100(uint8_t address)
+Finder6MMeasure Finder6M::getTHD100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_THD_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_THD_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getEnergy100(uint8_t address)
+Finder6MMeasure Finder6M::getEnergy100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ENERGY_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ENERGY_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getEnergyPositive100(uint8_t address)
+Finder6MMeasure Finder6M::getEnergyPositive100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ENERGY_POSITIVE_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ENERGY_POSITIVE_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getEnergyNegative100(uint8_t address)
+Finder6MMeasure Finder6M::getEnergyNegative100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ENERGY_NEGATIVE_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ENERGY_NEGATIVE_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
-Finder6MMeasure Finder6M::getInstantaneousVoltagePeak100(uint8_t address)
+Finder6MMeasure Finder6M::getInstantaneousVoltagePeak100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_INSTANTANEOUS_VOLTAGE_PEAK_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_INSTANTANEOUS_VOLTAGE_PEAK_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 }
 
-Finder6MMeasure Finder6M::getInstantaneousCurrentPeak100(uint8_t address)
+Finder6MMeasure Finder6M::getInstantaneousCurrentPeak100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
-    bool isOk = modbus6MRead32(address, FINDER_6M_REG_INSTANTANEOUS_CURRENT_PEAK_100, &value);
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_INSTANTANEOUS_CURRENT_PEAK_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 }
 
-Finder6MMeasure Finder6M::getVoltageRMS(uint8_t address)
+Finder6MMeasure Finder6M::getVoltageRMS(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getVoltageRMS100(address);
+    Finder6MMeasure m = getVoltageRMS100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getVoltageMax(uint8_t address)
+Finder6MMeasure Finder6M::getVoltageMax(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getVoltageMax100(address);
+    Finder6MMeasure m = getVoltageMax100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getVoltageMin(uint8_t address)
+Finder6MMeasure Finder6M::getVoltageMin(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getVoltageMin100(address);
+    Finder6MMeasure m = getVoltageMin100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getCurrentRMS(uint8_t address)
+Finder6MMeasure Finder6M::getCurrentRMS(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getCurrentRMS100(address);
+    Finder6MMeasure m = getCurrentRMS100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getCurrentMax(uint8_t address)
+Finder6MMeasure Finder6M::getCurrentMax(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getCurrentMax100(address);
+    Finder6MMeasure m = getCurrentMax100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getCurrentMin(uint8_t address)
+Finder6MMeasure Finder6M::getCurrentMin(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getCurrentMin100(address);
+    Finder6MMeasure m = getCurrentMin100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getActivePower(uint8_t address)
+Finder6MMeasure Finder6M::getActivePower(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getActivePower100(address);
+    Finder6MMeasure m = getActivePower100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getReactivePower(uint8_t address)
+Finder6MMeasure Finder6M::getReactivePower(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getReactivePower100(address);
+    Finder6MMeasure m = getReactivePower100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getApparentPower(uint8_t address)
+Finder6MMeasure Finder6M::getApparentPower(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getApparentPower100(address);
+    Finder6MMeasure m = getApparentPower100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getPowerFactor(uint8_t address)
+Finder6MMeasure Finder6M::getPowerFactor(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getPowerFactor100(address);
+    Finder6MMeasure m = getPowerFactor100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getFrequency(uint8_t address)
+Finder6MMeasure Finder6M::getFrequency(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getFrequency100(address);
+    Finder6MMeasure m = getFrequency100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getTHD(uint8_t address)
+Finder6MMeasure Finder6M::getTHD(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getTHD100(address);
+    Finder6MMeasure m = getTHD100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getEnergy(uint8_t address)
+Finder6MMeasure Finder6M::getEnergy(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getEnergy100(address);
+    Finder6MMeasure m = getEnergy100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getEnergyPositive(uint8_t address)
+Finder6MMeasure Finder6M::getEnergyPositive(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getEnergyPositive100(address);
+    Finder6MMeasure m = getEnergyPositive100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getEnergyNegative(uint8_t address)
+Finder6MMeasure Finder6M::getEnergyNegative(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getEnergyNegative100(address);
+    Finder6MMeasure m = getEnergyNegative100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getInstantaneousVoltagePeak(uint8_t address)
+Finder6MMeasure Finder6M::getInstantaneousVoltagePeak(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getInstantaneousVoltagePeak100(address);
+    Finder6MMeasure m = getInstantaneousVoltagePeak100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-Finder6MMeasure Finder6M::getInstantaneousCurrentPeak(uint8_t address)
+Finder6MMeasure Finder6M::getInstantaneousCurrentPeak(uint8_t address, uint8_t attempts)
 {
-    Finder6MMeasure m = getInstantaneousCurrentPeak100(address);
+    Finder6MMeasure m = getInstantaneousCurrentPeak100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
-bool Finder6M::getStatus(uint8_t address, uint16_t *value)
+bool Finder6M::getStatus(uint8_t address, uint16_t *value, uint8_t attempts)
 {
-    return modbus6MRead16(address, FINDER_6M_REG_STATUS, value);
+    return modbus6MRead16(address, FINDER_6M_REG_STATUS, value, attempts);
 };
 
 bool Finder6M::isVoltageOverRange(uint16_t status)
@@ -386,9 +386,9 @@ bool Finder6M::isCurrentUnderRange(uint16_t status)
     return (status & FINDER_6M_STATUS_BITMASK_CURRENT_UNDER_RANGE) >> 14;
 };
 
-bool Finder6M::getFlagMeasurement(uint8_t address, uint16_t *value)
+bool Finder6M::getFlagMeasurement(uint8_t address, uint16_t *value, uint8_t attempts)
 {
-    return modbus6MRead16(address, FINDER_6M_REG_FLAG_MEASUREMENT, value);
+    return modbus6MRead16(address, FINDER_6M_REG_FLAG_MEASUREMENT, value, attempts);
 };
 
 bool Finder6M::measureDirectCurrent(uint8_t address)
@@ -461,9 +461,8 @@ bool Finder6M::reset(uint8_t address)
     return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_RESET);
 };
 
-bool Finder6M::modbus6MRead16(uint8_t address, uint16_t reg, uint16_t *value)
+bool Finder6M::modbus6MRead16(uint8_t address, uint16_t reg, uint16_t *value, uint8_t attempts)
 {
-    uint32_t attempts = 3;
     while (attempts > 0)
     {
         ModbusRTUClient.requestFrom(address, HOLDING_REGISTERS, reg, 1);
@@ -482,9 +481,8 @@ bool Finder6M::modbus6MRead16(uint8_t address, uint16_t reg, uint16_t *value)
     return false;
 };
 
-bool Finder6M::modbus6MRead32(uint8_t address, uint16_t reg, uint32_t *value, bool swapped)
+bool Finder6M::modbus6MRead32(uint8_t address, uint16_t reg, uint32_t *value, bool swapped, uint8_t attempts)
 {
-    uint8_t attempts = 3;
     while (attempts > 0)
     {
         ModbusRTUClient.requestFrom(address, HOLDING_REGISTERS, reg, 2);
@@ -512,9 +510,8 @@ bool Finder6M::modbus6MRead32(uint8_t address, uint16_t reg, uint32_t *value, bo
     return false;
 };
 
-bool Finder6M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
+bool Finder6M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite, uint8_t attempts)
 {
-    uint8_t attempts = 3;
     while (attempts > 0)
     {
         if (ModbusRTUClient.holdingRegisterWrite(address, reg, toWrite) == 1)
@@ -530,10 +527,9 @@ bool Finder6M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
     return false;
 };
 
-bool Finder6M::modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, bool swapped)
+bool Finder6M::modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, bool swapped, uint8_t attempts)
 {
     bool okWrite1, okWrite2;
-    uint8_t attempts = 3;
     while (attempts > 0)
     {
         if (swapped)

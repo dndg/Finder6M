@@ -60,13 +60,13 @@ void loop()
     switch (id)
     {
     case 7:
-        Serial.print("Finder6M.TA");
+        Serial.print(" Finder6M.TA");
         break;
     case 18:
-        Serial.print("Finder6M.TF");
+        Serial.print(" Finder6M.TF");
         break;
     case 48:
-        Serial.print("Finder6M.TB");
+        Serial.print(" Finder6M.TB");
         break;
     }
 

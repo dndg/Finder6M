@@ -94,17 +94,19 @@ public:
     /**
      * @param address Modbus id of the target device.
      * @param value Pointer to the variable that will store the output value.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool getMachineId(uint8_t address, uint16_t *value);
+    bool getMachineId(uint8_t address, uint16_t *value, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param value Pointer to the variable that will store the output value.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool getFirmwareVersion(uint8_t address, uint16_t *value);
+    bool getFirmwareVersion(uint8_t address, uint16_t *value, uint8_t attempts = 3);
     /**
      * @param newAddress Modbus id that will be assigned to the target device.
      * @param oldAddress Current id of the target device. If none is specified
@@ -140,11 +142,12 @@ public:
     bool setEvenParity(uint8_t address);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the Voltage
      * transformer ratio.
      */
-    Finder6MMeasure getTVRatio(uint8_t address);
+    Finder6MMeasure getTVRatio(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param value Value of the Voltage transformer ratio.
@@ -154,11 +157,12 @@ public:
     bool setTVRatio(uint8_t address, float value);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the Current
      * transformer ratio.
      */
-    Finder6MMeasure getTARatio(uint8_t address);
+    Finder6MMeasure getTARatio(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param value Value of the Current transformer ratio.
@@ -168,249 +172,282 @@ public:
     bool setTARatio(uint8_t address, float value);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Voltage RMS measurement in V hundredths.
      */
-    Finder6MMeasure getVoltageRMS100(uint8_t address);
+    Finder6MMeasure getVoltageRMS100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      *
      * @return A Finder 6MMeasure containing the
      * Max Voltage RMS in V hundredths.
      */
-    Finder6MMeasure getVoltageMax100(uint8_t address);
+    Finder6MMeasure getVoltageMax100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Min Voltage RMS in V hundredths.
      */
-    Finder6MMeasure getVoltageMin100(uint8_t address);
+    Finder6MMeasure getVoltageMin100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Current RMS measurement in mA hundredths.
      */
-    Finder6MMeasure getCurrentRMS100(uint8_t address);
+    Finder6MMeasure getCurrentRMS100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Max Current RMS in mA hundredths.
      */
-    Finder6MMeasure getCurrentMax100(uint8_t address);
+    Finder6MMeasure getCurrentMax100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Min Current RMS in mA hundredths.
      */
-    Finder6MMeasure getCurrentMin100(uint8_t address);
+    Finder6MMeasure getCurrentMin100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Active Power measurement in W hundredths.
      */
-    Finder6MMeasure getActivePower100(uint8_t address);
+    Finder6MMeasure getActivePower100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Reactive Power measurement in var hundredths.
      */
-    Finder6MMeasure getReactivePower100(uint8_t address);
+    Finder6MMeasure getReactivePower100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Apparent Power measurement in VA hundredths.
      */
-    Finder6MMeasure getApparentPower100(uint8_t address);
+    Finder6MMeasure getApparentPower100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      *
      * @return A Finder 6MMeasure containing the
      * power factor measurement in hundredths.
      */
-    Finder6MMeasure getPowerFactor100(uint8_t address);
+    Finder6MMeasure getPowerFactor100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * frequency measurement in Hz hundredths.
      */
-    Finder6MMeasure getFrequency100(uint8_t address);
+    Finder6MMeasure getFrequency100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * total harmonic distortion (THD) measurement in hundredths.
      */
-    Finder6MMeasure getTHD100(uint8_t address);
+    Finder6MMeasure getTHD100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * energy measurement in KWh hundredths.
      */
-    Finder6MMeasure getEnergy100(uint8_t address);
+    Finder6MMeasure getEnergy100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * positive energy measurement in KWh hundredths.
      */
-    Finder6MMeasure getEnergyPositive100(uint8_t address);
+    Finder6MMeasure getEnergyPositive100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * negative energy measurement in KWh hundredths.
      */
-    Finder6MMeasure getEnergyNegative100(uint8_t address);
+    Finder6MMeasure getEnergyNegative100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * instantaneous voltage peak in V hundredths.
      */
-    Finder6MMeasure getInstantaneousVoltagePeak100(uint8_t address);
+    Finder6MMeasure getInstantaneousVoltagePeak100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * instantaneous current peak in mA hundredths.
      */
-    Finder6MMeasure getInstantaneousCurrentPeak100(uint8_t address);
+    Finder6MMeasure getInstantaneousCurrentPeak100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Voltage RMS measurement (V).
      */
-    Finder6MMeasure getVoltageRMS(uint8_t address);
+    Finder6MMeasure getVoltageRMS(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Max Voltage RMS (V).
      */
-    Finder6MMeasure getVoltageMax(uint8_t address);
+    Finder6MMeasure getVoltageMax(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Min Voltage RMS (V).
      */
-    Finder6MMeasure getVoltageMin(uint8_t address);
+    Finder6MMeasure getVoltageMin(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Current RMS measurement (mA).
      */
-    Finder6MMeasure getCurrentRMS(uint8_t address);
+    Finder6MMeasure getCurrentRMS(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Max Current RMS (mA).
      */
-    Finder6MMeasure getCurrentMax(uint8_t address);
+    Finder6MMeasure getCurrentMax(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Min Current RMS (mA).
      */
-    Finder6MMeasure getCurrentMin(uint8_t address);
+    Finder6MMeasure getCurrentMin(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Active Power measurement (W).
      */
-    Finder6MMeasure getActivePower(uint8_t address);
+    Finder6MMeasure getActivePower(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Reactive Power measurement (var).
      */
-    Finder6MMeasure getReactivePower(uint8_t address);
+    Finder6MMeasure getReactivePower(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * Apparent Power measurement (VA).
      */
-    Finder6MMeasure getApparentPower(uint8_t address);
+    Finder6MMeasure getApparentPower(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * power factor measurement.
      */
-    Finder6MMeasure getPowerFactor(uint8_t address);
+    Finder6MMeasure getPowerFactor(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * frequency measurement (Hz).
      */
-    Finder6MMeasure getFrequency(uint8_t address);
+    Finder6MMeasure getFrequency(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * total harmonic distortion (THD) measurement.
      */
-    Finder6MMeasure getTHD(uint8_t address);
+    Finder6MMeasure getTHD(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * energy measurement (KWh).
      */
-    Finder6MMeasure getEnergy(uint8_t address);
+    Finder6MMeasure getEnergy(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * positive energy measurement (KWh).
      */
-    Finder6MMeasure getEnergyPositive(uint8_t address);
+    Finder6MMeasure getEnergyPositive(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * negative energy measurement (KWh).
      */
-    Finder6MMeasure getEnergyNegative(uint8_t address);
+    Finder6MMeasure getEnergyNegative(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * instantaneous voltage peak (V).
      */
-    Finder6MMeasure getInstantaneousVoltagePeak(uint8_t address);
+    Finder6MMeasure getInstantaneousVoltagePeak(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
      * instantaneous current peak (mA).
      */
-    Finder6MMeasure getInstantaneousCurrentPeak(uint8_t address);
+    Finder6MMeasure getInstantaneousCurrentPeak(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param value Pointer to the variable that will store the output value.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool getStatus(uint8_t address, uint16_t *value);
+    bool getStatus(uint8_t address, uint16_t *value, uint8_t attempts = 3);
     /**
      * @param status Obtained with getStatus.
      *
@@ -438,10 +475,11 @@ public:
     /**
      * @param address Modbus id of the target device.
      * @param value Pointer to the variable that will store the output value.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool getFlagMeasurement(uint8_t address, uint16_t *value);
+    bool getFlagMeasurement(uint8_t address, uint16_t *value, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      *
@@ -500,10 +538,11 @@ public:
      * @param addr Modbus id of the target device.
      * @param reg Start address of the register.
      * @param value Pointer to the variable that will store the output value.
+     * @param attempts Number of attempts before returning error.
      *
      * @return True in case of success, false in case of error.
      */
-    bool modbus6MRead16(uint8_t address, uint16_t reg, uint16_t *value);
+    bool modbus6MRead16(uint8_t address, uint16_t reg, uint16_t *value, uint8_t attempts = 3);
     /**
      * Read two consecutive 16-bits registers and compose them
      * into a single 32-bits value, by shifting the first value
@@ -513,20 +552,22 @@ public:
      * @param reg Start address of the register.
      * @param value Pointer to the variable that will store the output value.
      * @param swapped true for MSW first, false for LSW first (default).
+     * @param attempts Number of attempts before returning error.
      *
      * @return True in case of success, false in case of error.
      */
-    bool modbus6MRead32(uint8_t address, uint16_t reg, uint32_t *value, bool swapped = false);
+    bool modbus6MRead32(uint8_t address, uint16_t reg, uint32_t *value, bool swapped = false, uint8_t attempts = 3);
     /**
      * Write 8-bits or 16-bits values to a given register.
      *
      * @param address Modbus id of the target device.
      * @param reg Start address of the destination register.
      * @param toWrite Content that will be written to the destination register.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite);
+    bool modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite, uint8_t attempts = 3);
     /**
      * Write 32-bits values to two consecutive 16-bits registers.
      *
@@ -534,10 +575,11 @@ public:
      * @param reg Start address of the destination register.
      * @param toWrite Content that will be written to the destination registers.
      * @param swapped true for MSW first, false for LSW first (default).
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, bool swapped = false);
+    bool modbus6MWrite32(uint8_t address, uint16_t reg, uint32_t toWrite, bool swapped = false, uint8_t attempts = 3);
     /**
      * Safely convert float to 32-bits integer.
      */
