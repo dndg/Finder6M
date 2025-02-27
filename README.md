@@ -56,7 +56,7 @@ The new class `Finder6MMeasure` allows you to:
 
 * Get the read value as `float`, using the function `toFloat()`.
 * Get the read value as `int32_t`, using the function `toInt()`.
-* Get the result of the read as `bool`, using the function `isError()`.
+* Get the result of the read as `bool`, using the function `isReadError()`.
 
 Additionally, some functions that previously returned `uint16_t` now return a
 `bool` and take a `uint16_t *` parameter.
