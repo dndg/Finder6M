@@ -54,49 +54,49 @@ bool Finder6M::getFirmwareVersion(uint8_t address, uint16_t *value, uint8_t atte
     return modbus6MRead16(address, FINDER_6M_REG_FIRMWARE_VERSION, value, attempts);
 };
 
-bool Finder6M::setModbusAddress(uint8_t newAddress, uint8_t oldAddress)
+bool Finder6M::setModbusAddress(uint8_t newAddress, uint8_t oldAddress, uint8_t attempts)
 {
-    return modbus6MWrite16(oldAddress, FINDER_6M_REG_MODBUS_ADDRESS, newAddress);
+    return modbus6MWrite16(oldAddress, FINDER_6M_REG_MODBUS_ADDRESS, newAddress, attempts);
 };
 
-bool Finder6M::setBaudrate(uint8_t address, uint32_t baudrate)
+bool Finder6M::setBaudrate(uint8_t address, uint32_t baudrate, uint8_t attempts)
 {
     switch (baudrate)
     {
     case 1200:
-        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_1200);
+        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_1200, attempts);
     case 2400:
-        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_2400);
+        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_2400, attempts);
     case 4800:
-        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_4800);
+        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_4800, attempts);
     case 9600:
-        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_9600);
+        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_9600, attempts);
     case 19200:
-        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_19200);
+        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_19200, attempts);
     case 38400:
-        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_38400);
+        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_38400, attempts);
     case 57600:
-        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_57600);
+        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_57600, attempts);
     case 115200:
-        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_115200);
+        return modbus6MWrite16(address, FINDER_6M_REG_BAUDRATE, FINDER_6M_BAUDRATE_CODE_115200, attempts);
     default:
         return false;
     }
 };
 
-bool Finder6M::setNoParity(uint8_t address)
+bool Finder6M::setNoParity(uint8_t address, uint8_t attempts)
 {
-    return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_NO);
+    return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_NO, attempts);
 };
 
-bool Finder6M::setOddParity(uint8_t address)
+bool Finder6M::setOddParity(uint8_t address, uint8_t attempts)
 {
-    return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_ODD);
+    return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_ODD, attempts);
 };
 
-bool Finder6M::setEvenParity(uint8_t address)
+bool Finder6M::setEvenParity(uint8_t address, uint8_t attempts)
 {
-    return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_EVEN);
+    return modbus6MWrite16(address, FINDER_6M_REG_PARITY, FINDER_6M_PARITY_CODE_EVEN, attempts);
 };
 
 Finder6MMeasure Finder6M::getTVRatio(uint8_t address, uint8_t attempts)
@@ -106,9 +106,9 @@ Finder6MMeasure Finder6M::getTVRatio(uint8_t address, uint8_t attempts)
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, !isOk);
 };
 
-bool Finder6M::setTVRatio(uint8_t address, float value)
+bool Finder6M::setTVRatio(uint8_t address, float value, uint8_t attempts)
 {
-    return modbus6MWrite32(address, FINDER_6M_REG_TV_RATIO, toUint32(value));
+    return modbus6MWrite32(address, FINDER_6M_REG_TV_RATIO, toUint32(value), attempts);
 };
 
 Finder6MMeasure Finder6M::getTARatio(uint8_t address, uint8_t attempts)
@@ -118,9 +118,9 @@ Finder6MMeasure Finder6M::getTARatio(uint8_t address, uint8_t attempts)
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, !isOk);
 };
 
-bool Finder6M::setTARatio(uint8_t address, float value)
+bool Finder6M::setTARatio(uint8_t address, float value, uint8_t attempts)
 {
-    return modbus6MWrite32(address, FINDER_6M_REG_TA_RATIO, toUint32(value));
+    return modbus6MWrite32(address, FINDER_6M_REG_TA_RATIO, toUint32(value), attempts);
 };
 
 Finder6MMeasure Finder6M::getVoltageRMS100(uint8_t address, uint8_t attempts)
@@ -391,74 +391,74 @@ bool Finder6M::getFlagMeasurement(uint8_t address, uint16_t *value, uint8_t atte
     return modbus6MRead16(address, FINDER_6M_REG_FLAG_MEASUREMENT, value, attempts);
 };
 
-bool Finder6M::measureDirectCurrent(uint8_t address)
+bool Finder6M::measureDirectCurrent(uint8_t address, uint8_t attempts)
 {
     uint16_t value;
-    if (!getFlagMeasurement(address, &value))
+    if (!getFlagMeasurement(address, &value, attempts))
     {
         return false;
     }
-    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value | 0x0001));
+    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value | 0x0001), attempts);
 };
 
-bool Finder6M::measureAlternateCurrent(uint8_t address)
+bool Finder6M::measureAlternateCurrent(uint8_t address, uint8_t attempts)
 {
     uint16_t value;
-    if (!getFlagMeasurement(address, &value))
+    if (!getFlagMeasurement(address, &value, attempts))
     {
         return false;
     }
-    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value & 0xFFFE));
+    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value & 0xFFFE), attempts);
 };
 
-bool Finder6M::enableEnergyStoring(uint8_t address)
+bool Finder6M::enableEnergyStoring(uint8_t address, uint8_t attempts)
 {
     uint16_t value;
-    if (!getFlagMeasurement(address, &value))
+    if (!getFlagMeasurement(address, &value, attempts))
     {
         return false;
     }
-    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value | 0x0002));
+    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value | 0x0002), attempts);
 };
 
-bool Finder6M::disableEnergyStoring(uint8_t address)
+bool Finder6M::disableEnergyStoring(uint8_t address, uint8_t attempts)
 {
     uint16_t value;
-    if (!getFlagMeasurement(address, &value))
+    if (!getFlagMeasurement(address, &value, attempts))
     {
         return false;
     }
-    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value & 0xFFFD));
+    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value & 0xFFFD), attempts);
 };
 
-bool Finder6M::detectFrequencyOnVoltageChannel(uint8_t address)
+bool Finder6M::detectFrequencyOnVoltageChannel(uint8_t address, uint8_t attempts)
 {
     uint16_t value;
-    if (!getFlagMeasurement(address, &value))
+    if (!getFlagMeasurement(address, &value, attempts))
     {
         return false;
     }
-    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value | 0x0004));
+    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value | 0x0004), attempts);
 };
 
-bool Finder6M::detectFrequencyOnCurrentChannel(uint8_t address)
+bool Finder6M::detectFrequencyOnCurrentChannel(uint8_t address, uint8_t attempts)
 {
     uint16_t value;
-    if (!getFlagMeasurement(address, &value))
+    if (!getFlagMeasurement(address, &value, attempts))
     {
         return false;
     }
-    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value & 0xFFFB));
+    return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value & 0xFFFB), attempts);
 };
 
-bool Finder6M::saveSettings(uint8_t address)
+bool Finder6M::saveSettings(uint8_t address, uint8_t attempts)
 {
-    return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_SAVE);
+    return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_SAVE, attempts);
 };
 
-bool Finder6M::reset(uint8_t address)
+bool Finder6M::reset(uint8_t address, uint8_t attempts)
 {
-    return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_RESET);
+    return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_RESET, attempts);
 };
 
 bool Finder6M::modbus6MRead16(uint8_t address, uint16_t reg, uint16_t *value, uint8_t attempts)

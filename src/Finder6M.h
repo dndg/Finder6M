@@ -111,35 +111,40 @@ public:
      * @param newAddress Modbus id that will be assigned to the target device.
      * @param oldAddress Current id of the target device. If none is specified
      * defaults to 1.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool setModbusAddress(uint8_t newAddress, uint8_t oldAddress = 1);
+    bool setModbusAddress(uint8_t newAddress, uint8_t oldAddress = 1, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param baudrate Baudrate that will be set.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool setBaudrate(uint8_t address, uint32_t baudrate);
+    bool setBaudrate(uint8_t address, uint32_t baudrate, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool setNoParity(uint8_t address);
+    bool setNoParity(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool setOddParity(uint8_t address);
+    bool setOddParity(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool setEvenParity(uint8_t address);
+    bool setEvenParity(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
@@ -151,12 +156,14 @@ public:
     /**
      * @param address Modbus id of the target device.
      * @param value Value of the Voltage transformer ratio.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool setTVRatio(uint8_t address, float value);
+    bool setTVRatio(uint8_t address, float value, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the Current
@@ -166,10 +173,11 @@ public:
     /**
      * @param address Modbus id of the target device.
      * @param value Value of the Current transformer ratio.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool setTARatio(uint8_t address, float value);
+    bool setTARatio(uint8_t address, float value, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
@@ -482,56 +490,64 @@ public:
     bool getFlagMeasurement(uint8_t address, uint16_t *value, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool measureDirectCurrent(uint8_t address);
+    bool measureDirectCurrent(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool measureAlternateCurrent(uint8_t address);
+    bool measureAlternateCurrent(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool enableEnergyStoring(uint8_t address);
+    bool enableEnergyStoring(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool disableEnergyStoring(uint8_t address);
+    bool disableEnergyStoring(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool detectFrequencyOnVoltageChannel(uint8_t address);
+    bool detectFrequencyOnVoltageChannel(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool detectFrequencyOnCurrentChannel(uint8_t address);
+    bool detectFrequencyOnCurrentChannel(uint8_t address, uint8_t attempts = 3);
     /**
      * Save the current settings on the flash memory of the device.
      *
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool saveSettings(uint8_t address);
+    bool saveSettings(uint8_t address, uint8_t attempts = 3);
     /**
      * Reset the device completely. This does not reset modbus address and baudrate.
      *
      * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool reset(uint8_t address);
+    bool reset(uint8_t address, uint8_t attempts = 3);
     /**
      * Read a 16-bits register.
      *
