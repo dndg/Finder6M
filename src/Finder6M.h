@@ -92,6 +92,12 @@ public:
      */
     bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1, uint32_t timeoutMs = 0);
     /**
+     * Set the Modbus RTU client timeout.
+     *
+     * @param timeoutMs Timeout in ms.
+     */
+    void setTimeout(uint32_t timeoutMs);
+    /**
      * @param address Modbus id of the target device.
      * @param value Pointer to the variable that will store the output value.
      * @param attempts Number of attempts before returning error.

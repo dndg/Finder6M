@@ -1,6 +1,6 @@
 #include <Finder6M.h>
 
-#define ADDRESS 2
+#define ADDRESS 1
 #define ATTEMPTS 1
 
 Finder6M f6m;
@@ -8,7 +8,9 @@ Finder6M f6m;
 void setup()
 {
     Serial.begin(9600);
-    f6m.init(38400, SERIAL_8N1, 200);
+
+    f6m.init(38400);
+    f6m.setTimeout(50);
 
     benchmark_single();
     benchmark_couple();
@@ -102,7 +104,7 @@ void benchmark_single()
 
 void benchmark_couple()
 {
-    int count = 100;
+    int count = 50;
     int errors = 0;
     int treshold_ms = 50;
     int long_reads = 0; // reads that lasted more than treshold_ms

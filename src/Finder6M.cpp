@@ -44,6 +44,11 @@ bool Finder6M::init(uint32_t baudrate, uint32_t serialParameters, uint32_t timeo
     return ModbusRTUClient.begin(baudrate, serialParameters) == 1;
 };
 
+void Finder6M::setTimeout(uint32_t timeoutMs)
+{
+    ModbusRTUClient.setTimeout(timeoutMs);
+};
+
 bool Finder6M::getMachineId(uint8_t address, uint16_t *value, uint8_t attempts)
 {
     return modbus6MRead16(address, FINDER_6M_REG_MACHINE_ID, value, attempts);
