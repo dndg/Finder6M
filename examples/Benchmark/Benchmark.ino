@@ -8,9 +8,10 @@ Finder6M f6m;
 void setup()
 {
     Serial.begin(9600);
+    delay(1000);
 
     f6m.init(38400);
-    f6m.setTimeout(50);
+    f6m.setTimeout(200);
 
     benchmark_single();
     benchmark_couple();
