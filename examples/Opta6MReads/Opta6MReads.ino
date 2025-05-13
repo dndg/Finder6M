@@ -5,18 +5,13 @@ constexpr uint8_t MODBUS_6M_ADDRESS = 1;
 
 void setup()
 {
-    Serial.begin(38400);
+    Serial.begin(9600);
+    delay(1000);
 
-    if (!f6m.init())
-    {
-        stop();
-    }
+    f6m.init();
 
     f6m.measureAlternateCurrent(MODBUS_6M_ADDRESS);
-    if (!f6m.saveSettings(MODBUS_6M_ADDRESS))
-    {
-        stop();
-    }
+    f6m.saveSettings(MODBUS_6M_ADDRESS);
 }
 
 void loop()
@@ -82,7 +77,7 @@ void loop()
     bool res = f6m.getStatus(MODBUS_6M_ADDRESS, &status);
     printStatus(status);
 
-    delay(1000);
+    delay(5000);
 }
 
 void printMeasure(String label, Finder6MMeasure m)
