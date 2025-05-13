@@ -714,6 +714,104 @@ bool Finder6M::detectFrequencyOnCurrentChannel(uint8_t address, uint8_t attempts
     return modbus6MWrite16(address, FINDER_6M_REG_FLAG_MEASUREMENT, (value & 0xFFFB), attempts);
 };
 
+bool Finder6M::setCurrentCutoff(uint8_t address, uint16_t value, uint8_t attempts)
+{
+    uint16_t currentAndPower;
+    uint16_t scaleFactor;
+    if (!getCurrentAndPowerCutoff(address, &currentAndPower, &scaleFactor, attempts))
+    {
+        return false;
+    }
+
+    if (scaleFactor == 0)
+    {
+        return false;
+    }
+
+    uint16_t current = value / scaleFactor;
+    if (current > 0xFF)
+    {
+        current = 0xFF;
+    }
+    currentAndPower = (currentAndPower & 0xFF00) | (current & 0x00FF);
+
+    return modbus6MWrite16(address, FINDER_6M_REG_CURRENT_AND_POWER_CUT_OFF, currentAndPower, attempts);
+}
+
+bool Finder6M::setPowerCutoff(uint8_t address, uint16_t value, uint8_t attempts)
+{
+    uint16_t currentAndPower;
+    uint16_t scaleFactor;
+    if (!getCurrentAndPowerCutoff(address, &currentAndPower, &scaleFactor, attempts))
+    {
+        return false;
+    }
+
+    if (scaleFactor == 0)
+    {
+        return false;
+    }
+
+    uint16_t power = value / scaleFactor;
+    if (power > 0xFF)
+    {
+        power = 0xFF;
+    }
+    currentAndPower = (currentAndPower & 0x00FF) | ((power & 0x00FF) << 8);
+
+    return modbus6MWrite16(address, FINDER_6M_REG_CURRENT_AND_POWER_CUT_OFF, currentAndPower, attempts);
+}
+
+bool Finder6M::getCurrentCutoff(uint8_t address, uint16_t *value, uint8_t attempts)
+{
+    uint16_t currentAndPower;
+    uint16_t scaleFactor;
+    if (!getCurrentAndPowerCutoff(address, &currentAndPower, &scaleFactor, attempts))
+    {
+        return false;
+    }
+
+    *value = (currentAndPower & 0x00FF) * scaleFactor;
+    return true;
+}
+
+bool Finder6M::getPowerCutoff(uint8_t address, uint16_t *value, uint8_t attempts)
+{
+    uint16_t currentAndPower;
+    uint16_t scaleFactor;
+    if (!getCurrentAndPowerCutoff(address, &currentAndPower, &scaleFactor, attempts))
+    {
+        return false;
+    }
+
+    *value = ((currentAndPower & 0xFF00) >> 8) * scaleFactor;
+    return true;
+}
+
+bool Finder6M::getCurrentAndPowerCutoff(uint8_t address, uint16_t *value, uint16_t *scaleFactor, uint8_t attempts)
+{
+    uint16_t id;
+    if (!getMachineId(address, &id, attempts))
+    {
+        return false;
+    }
+
+    switch (id)
+    {
+    case FINDER_6M_MODEL_TA:
+        *scaleFactor = 1;
+        break;
+    case FINDER_6M_MODEL_TB:
+    case FINDER_6M_MODEL_TF:
+        *scaleFactor = 10;
+        break;
+    default:
+        return false;
+    }
+
+    return modbus6MRead16(address, FINDER_6M_REG_CURRENT_AND_POWER_CUT_OFF, value, attempts);
+}
+
 bool Finder6M::saveSettings(uint8_t address, uint8_t attempts)
 {
     return modbus6MWrite16(address, FINDER_6M_REG_COMMAND, FINDER_6M_COMMAND_SAVE, attempts);

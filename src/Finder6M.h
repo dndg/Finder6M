@@ -908,6 +908,68 @@ public:
      */
     bool detectFrequencyOnCurrentChannel(uint8_t address, uint8_t attempts = 3);
     /**
+     * Set the current cutoff, the minimum threshold under which
+     * current is treated as zero. The function adjusts the value
+     * based on the device model.
+     *
+     * @param address Modbus id of the target device.
+     * @param value Current value in mA.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool setCurrentCutoff(uint8_t address, uint16_t value, uint8_t attempts = 3);
+    /**
+     * Set the power cutoff, the minimum threshold under which
+     * power is treated as zero. The function adjusts the value
+     * based on the device model.
+     *
+     * @param address Modbus id of the target device.
+     * @param value Power value in W.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool setPowerCutoff(uint8_t address, uint16_t value, uint8_t attempts = 3);
+    /**
+     * Get the current cutoff, the minimum threshold under which
+     * current is treated as zero. The function adjusts the value
+     * based on the device model.
+     *
+     * @param address Modbus id of the target device.
+     * @param value Pointer to the variable that will store the
+     * output value in mA.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool getCurrentCutoff(uint8_t address, uint16_t *value, uint8_t attempts = 3);
+    /**
+     * Get the power cutoff, the minimum threshold under which
+     * power is treated as zero. The function adjusts the value
+     * based on the device model.
+     *
+     * @param address Modbus id of the target device.
+     * @param value Pointer to the variable that will store the
+     * output value in W.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool getPowerCutoff(uint8_t address, uint16_t *value, uint8_t attempts = 3);
+    /**
+     * Get current and power cutoff bytes.
+     *
+     * @param address Modbus id of the target device.
+     * @param value Pointer to the variable that will store the output bytes.
+     * @param scaleFactor Pointer to the variable that will store the scale
+     * factor to convert the bytes into mA or W.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool getCurrentAndPowerCutoff(uint8_t address, uint16_t *value, uint16_t *scaleFactor, uint8_t attempts = 3);
+    /**
      * Save the current settings on the flash memory of the device.
      *
      * @param address Modbus id of the target device.
