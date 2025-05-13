@@ -33,13 +33,13 @@ void setup()
             {
                 switch (id)
                 {
-                case 7:
+                case FINDER_6M_MODEL_TA:
                     Serial.print(" Finder6M.TA");
                     break;
-                case 18:
+                case FINDER_6M_MODEL_TB:
                     Serial.print(" Finder6M.TF");
                     break;
-                case 48:
+                case FINDER_6M_MODEL_TF:
                     Serial.print(" Finder6M.TB");
                     break;
                 }

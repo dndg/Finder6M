@@ -93,6 +93,13 @@ constexpr int FINDER_6M_STATUS_BITMASK_CURRENT_UNDER_RANGE = 0x4000;     // Bitm
 
 #define INVALID_DATA 0xFFFFFFFF
 
+enum Finder6MModel : uint16_t
+{
+    FINDER_6M_MODEL_TA = 7,
+    FINDER_6M_MODEL_TB = 18,
+    FINDER_6M_MODEL_TF = 48,
+};
+
 class Finder6M
 {
 public:
