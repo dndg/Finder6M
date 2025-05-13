@@ -657,6 +657,168 @@ public:
      */
     Finder6MMeasure getInstantaneousCurrentPeak(uint8_t address, uint8_t attempts = 3);
     /**
+     * Set Voltage Max to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearVoltageMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Voltage Min to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearVoltageMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set instantaneous voltage peak to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearInstantaneousVoltagePeak(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Current Max to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearCurrentMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Current Min to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearCurrentMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set instantaneous current peak to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearInstantaneousCurrentPeak(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Active Power Max to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearActivePowerMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Active Power Min to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearActivePowerMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Reactive Power Max to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearReactivePowerMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Reactive Power Min to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearReactivePowerMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Apparent Power Max to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearApparentPowerMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Apparent Power Min to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearApparentPowerMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Power Factor Max to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearPowerFactorMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Power Factor Min to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearPowerFactorMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Frequency Max to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearFrequencyMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set Frequency Min to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearFrequencyMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set THD Max to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearTHDMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * Set THD Min to 0.
+     *
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool clearTHDMin(uint8_t address, uint8_t attempts = 3);
+    /**
      * @param address Modbus id of the target device.
      * @param value Pointer to the variable that will store the output value.
      * @param attempts Number of attempts before returning error.
@@ -748,7 +910,7 @@ public:
      */
     bool saveSettings(uint8_t address, uint8_t attempts = 3);
     /**
-     * Reset the device completely. This does not reset modbus address and baudrate.
+     * Reboot the device.
      *
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.

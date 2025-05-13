@@ -534,6 +534,96 @@ Finder6MMeasure Finder6M::getInstantaneousCurrentPeak(uint8_t address, uint8_t a
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
+bool Finder6M::clearVoltageMax(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_VOLTAGE_MAX_100, 0, false, attempts);
+}
+
+bool Finder6M::clearVoltageMin(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_VOLTAGE_MIN_100, 0, false, attempts);
+}
+
+bool Finder6M::clearInstantaneousVoltagePeak(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_INSTANTANEOUS_VOLTAGE_PEAK_100, 0, false, attempts);
+}
+
+bool Finder6M::clearCurrentMax(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_CURRENT_MAX_100, 0, false, attempts);
+}
+
+bool Finder6M::clearCurrentMin(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_CURRENT_MIN_100, 0, false, attempts);
+}
+
+bool Finder6M::clearInstantaneousCurrentPeak(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_INSTANTANEOUS_CURRENT_PEAK_100, 0, false, attempts);
+}
+
+bool Finder6M::clearActivePowerMax(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_ACTIVE_POWER_MAX_100, 0, false, attempts);
+}
+
+bool Finder6M::clearActivePowerMin(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_ACTIVE_POWER_MIN_100, 0, false, attempts);
+}
+
+bool Finder6M::clearReactivePowerMax(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_REACTIVE_POWER_MAX_100, 0, false, attempts);
+}
+
+bool Finder6M::clearReactivePowerMin(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_REACTIVE_POWER_MIN_100, 0, false, attempts);
+}
+
+bool Finder6M::clearApparentPowerMax(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_APPARENT_POWER_MAX_100, 0, false, attempts);
+}
+
+bool Finder6M::clearApparentPowerMin(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_APPARENT_POWER_MIN_100, 0, false, attempts);
+}
+
+bool Finder6M::clearPowerFactorMax(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_POWER_FACTOR_MAX_100, 0, false, attempts);
+}
+
+bool Finder6M::clearPowerFactorMin(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_POWER_FACTOR_MIN_100, 0, false, attempts);
+}
+
+bool Finder6M::clearFrequencyMax(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_FREQUENCY_MAX_100, 0, false, attempts);
+}
+
+bool Finder6M::clearFrequencyMin(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_FREQUENCY_MIN_100, 0, false, attempts);
+}
+
+bool Finder6M::clearTHDMax(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_THD_MAX_100, 0, false, attempts);
+}
+
+bool Finder6M::clearTHDMin(uint8_t address, uint8_t attempts)
+{
+    return modbus6MWrite32(address, FINDER_6M_REG_THD_MIN_100, 0, false, attempts);
+}
+
 bool Finder6M::getStatus(uint8_t address, uint16_t *value, uint8_t attempts)
 {
     return modbus6MRead16(address, FINDER_6M_REG_STATUS, value, attempts);

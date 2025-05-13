@@ -15,6 +15,12 @@ void loop()
 {
     Serial.println("** Reading 6M at address " + String(ADDRESS));
 
+    // Peak
+    Finder6MMeasure vpeak = f6m.getInstantaneousVoltagePeak(ADDRESS);
+    printMeasure("V peak", vpeak);
+    Finder6MMeasure ipeak = f6m.getInstantaneousCurrentPeak(ADDRESS);
+    printMeasure("I peak", ipeak);
+
     // Voltage
     Finder6MMeasure maxVoltage = f6m.getVoltageMax100(ADDRESS);
     printMeasure("Max Voltage in hundredths", maxVoltage);
@@ -95,6 +101,25 @@ void loop()
     Finder6MMeasure minTHD100 = f6m.getTHDMin(ADDRESS);
     printMeasure("Min THD", minTHD100);
 
+    clearRes(f6m.clearInstantaneousVoltagePeak(ADDRESS));
+    clearRes(f6m.clearInstantaneousCurrentPeak(ADDRESS));
+    clearRes(f6m.clearVoltageMax(ADDRESS));
+    clearRes(f6m.clearVoltageMin(ADDRESS));
+    clearRes(f6m.clearCurrentMax(ADDRESS));
+    clearRes(f6m.clearCurrentMin(ADDRESS));
+    clearRes(f6m.clearActivePowerMax(ADDRESS));
+    clearRes(f6m.clearActivePowerMin(ADDRESS));
+    clearRes(f6m.clearReactivePowerMax(ADDRESS));
+    clearRes(f6m.clearReactivePowerMin(ADDRESS));
+    clearRes(f6m.clearApparentPowerMax(ADDRESS));
+    clearRes(f6m.clearApparentPowerMin(ADDRESS));
+    clearRes(f6m.clearPowerFactorMax(ADDRESS));
+    clearRes(f6m.clearPowerFactorMin(ADDRESS));
+    clearRes(f6m.clearFrequencyMax(ADDRESS));
+    clearRes(f6m.clearFrequencyMin(ADDRESS));
+    clearRes(f6m.clearTHDMax(ADDRESS));
+    clearRes(f6m.clearTHDMin(ADDRESS));
+
     delay(5000);
 }
 
@@ -107,4 +132,9 @@ void printMeasure(String label, Finder6MMeasure m)
         return;
     }
     Serial.println("(float: " + String(m.toFloat()) + ", int: " + String(m.toInt()) + ")");
-};
+}
+
+void clearRes(bool res)
+{
+    Serial.println("   clear is " + String(res ? "OK" : "KO"));
+}
