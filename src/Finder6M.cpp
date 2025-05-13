@@ -177,10 +177,38 @@ Finder6MMeasure Finder6M::getActivePower100(uint8_t address, uint8_t attempts)
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
+Finder6MMeasure Finder6M::getActivePowerMax100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ACTIVE_POWER_MAX_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getActivePowerMin100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_ACTIVE_POWER_MIN_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
 Finder6MMeasure Finder6M::getReactivePower100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
     bool isOk = modbus6MRead32(address, FINDER_6M_REG_REACTIVE_POWER_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getReactivePowerMax100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_REACTIVE_POWER_MAX_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getReactivePowerMin100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_REACTIVE_POWER_MIN_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
@@ -191,10 +219,38 @@ Finder6MMeasure Finder6M::getApparentPower100(uint8_t address, uint8_t attempts)
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
+Finder6MMeasure Finder6M::getApparentPowerMax100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_APPARENT_POWER_MAX_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getApparentPowerMin100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_APPARENT_POWER_MIN_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
 Finder6MMeasure Finder6M::getPowerFactor100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
     bool isOk = modbus6MRead32(address, FINDER_6M_REG_POWER_FACTOR_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getPowerFactorMax100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_POWER_FACTOR_MAX_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getPowerFactorMin100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_POWER_FACTOR_MIN_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
@@ -205,10 +261,38 @@ Finder6MMeasure Finder6M::getFrequency100(uint8_t address, uint8_t attempts)
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
+Finder6MMeasure Finder6M::getFrequencyMax100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_FREQUENCY_MAX_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getFrequencyMin100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_FREQUENCY_MIN_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
 Finder6MMeasure Finder6M::getTHD100(uint8_t address, uint8_t attempts)
 {
     uint32_t value;
     bool isOk = modbus6MRead32(address, FINDER_6M_REG_THD_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getTHDMax100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_THD_MAX_100, &value, false, attempts);
+    return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
+};
+
+Finder6MMeasure Finder6M::getTHDMin100(uint8_t address, uint8_t attempts)
+{
+    uint32_t value;
+    bool isOk = modbus6MRead32(address, FINDER_6M_REG_THD_MIN_100, &value, false, attempts);
     return generateMeasure(value, F6M_MEASURE_TYPE_INT, !isOk);
 };
 
@@ -296,9 +380,37 @@ Finder6MMeasure Finder6M::getActivePower(uint8_t address, uint8_t attempts)
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
+Finder6MMeasure Finder6M::getActivePowerMax(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getActivePowerMax100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getActivePowerMin(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getActivePowerMin100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
 Finder6MMeasure Finder6M::getReactivePower(uint8_t address, uint8_t attempts)
 {
     Finder6MMeasure m = getReactivePower100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getReactivePowerMax(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getReactivePowerMax100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getReactivePowerMin(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getReactivePowerMin100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
@@ -310,9 +422,37 @@ Finder6MMeasure Finder6M::getApparentPower(uint8_t address, uint8_t attempts)
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
+Finder6MMeasure Finder6M::getApparentPowerMax(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getApparentPowerMax100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getApparentPowerMin(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getApparentPowerMin100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
 Finder6MMeasure Finder6M::getPowerFactor(uint8_t address, uint8_t attempts)
 {
     Finder6MMeasure m = getPowerFactor100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getPowerFactorMax(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getPowerFactorMax100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getPowerFactorMin(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getPowerFactorMin100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
@@ -324,9 +464,37 @@ Finder6MMeasure Finder6M::getFrequency(uint8_t address, uint8_t attempts)
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }
 
+Finder6MMeasure Finder6M::getFrequencyMax(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getFrequencyMax100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getFrequencyMin(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getFrequencyMin100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
 Finder6MMeasure Finder6M::getTHD(uint8_t address, uint8_t attempts)
 {
     Finder6MMeasure m = getTHD100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getTHDMax(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getTHDMax100(address, attempts);
+    uint32_t value = toUint32(m.toInt() / 100.00f);
+    return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
+}
+
+Finder6MMeasure Finder6M::getTHDMin(uint8_t address, uint8_t attempts)
+{
+    Finder6MMeasure m = getTHDMin100(address, attempts);
     uint32_t value = toUint32(m.toInt() / 100.00f);
     return generateMeasure(value, F6M_MEASURE_TYPE_FLOAT, m.isReadError());
 }

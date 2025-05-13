@@ -259,12 +259,42 @@ public:
     Finder6MMeasure getActivePower100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Max Active Power in W hundredths.
+     */
+    Finder6MMeasure getActivePowerMax100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Min Active Power in W hundredths.
+     */
+    Finder6MMeasure getActivePowerMin100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * Reactive Power measurement in var hundredths.
      */
     Finder6MMeasure getReactivePower100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Max Reactive Power in var hundredths.
+     */
+    Finder6MMeasure getReactivePowerMax100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Min Reactive Power in var hundredths.
+     */
+    Finder6MMeasure getReactivePowerMin100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
@@ -277,9 +307,39 @@ public:
      * @param address Modbus id of the target device.
      *
      * @return A Finder 6MMeasure containing the
+     * Max Apparent Power in VA hundredths.
+     */
+    Finder6MMeasure getApparentPowerMax100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Min Apparent Power in VA hundredths.
+     */
+    Finder6MMeasure getApparentPowerMin100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return A Finder 6MMeasure containing the
      * power factor measurement in hundredths.
      */
     Finder6MMeasure getPowerFactor100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Max Power Factor in hundredths.
+     */
+    Finder6MMeasure getPowerFactorMax100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Min Power Factor in hundredths.
+     */
+    Finder6MMeasure getPowerFactorMin100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
@@ -290,12 +350,42 @@ public:
     Finder6MMeasure getFrequency100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Max Frequency in Hz hundredths.
+     */
+    Finder6MMeasure getFrequencyMax100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Min Frequency in Hz hundredths.
+     */
+    Finder6MMeasure getFrequencyMin100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
      *
      * @return A Finder 6MMeasure containing the
      * total harmonic distortion (THD) measurement in hundredths.
      */
     Finder6MMeasure getTHD100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Max THD in hundredths.
+     */
+    Finder6MMeasure getTHDMax100(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder 6MMeasure containing the
+     * Min THD in hundredths.
+     */
+    Finder6MMeasure getTHDMin100(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
@@ -397,9 +487,41 @@ public:
      * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
+     * Max Active Power (W).
+     */
+    Finder6MMeasure getActivePowerMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
+     * Min Active Power (W).
+     */
+    Finder6MMeasure getActivePowerMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
      * Reactive Power measurement (var).
      */
     Finder6MMeasure getReactivePower(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
+     * Max Reactive Power (var).
+     */
+    Finder6MMeasure getReactivePowerMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
+     * Min Reactive Power (var).
+     */
+    Finder6MMeasure getReactivePowerMin(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
@@ -413,9 +535,41 @@ public:
      * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
+     * Max Apparent Power (VA).
+     */
+    Finder6MMeasure getApparentPowerMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
+     * Min Apparent Power (VA).
+     */
+    Finder6MMeasure getApparentPowerMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
      * power factor measurement.
      */
     Finder6MMeasure getPowerFactor(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
+     * Max Power Factor.
+     */
+    Finder6MMeasure getPowerFactorMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
+     * Min Power Factor.
+     */
+    Finder6MMeasure getPowerFactorMin(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
@@ -429,9 +583,39 @@ public:
      * @param attempts Number of attempts before returning error.
      *
      * @return A Finder6MMeasure containing the
+     * Max frequency (Hz).
+     */
+    Finder6MMeasure getFrequencyMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
+     * Min frequency (Hz).
+     */
+    Finder6MMeasure getFrequencyMin(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the
      * total harmonic distortion (THD) measurement.
      */
     Finder6MMeasure getTHD(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the Max THD.
+     */
+    Finder6MMeasure getTHDMax(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus id of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Finder6MMeasure containing the Min THD.
+     */
+    Finder6MMeasure getTHDMin(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus id of the target device.
      * @param attempts Number of attempts before returning error.
