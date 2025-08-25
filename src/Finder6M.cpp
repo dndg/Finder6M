@@ -546,7 +546,7 @@ bool Finder6M::clearVoltageMin(uint8_t address, uint8_t attempts)
 
 bool Finder6M::clearInstantaneousVoltagePeak(uint8_t address, uint8_t attempts)
 {
-    return modbus6MWrite32(address, FINDER_6M_REG_INSTANTANEOUS_VOLTAGE_PEAK_100, 0, false, attempts);
+    return modbus6MWrite32(address, FINDER_6M_REG_INSTANTANEOUS_VOLTAGE_PEAK, 0, false, attempts);
 }
 
 bool Finder6M::clearCurrentMax(uint8_t address, uint8_t attempts)
@@ -561,7 +561,7 @@ bool Finder6M::clearCurrentMin(uint8_t address, uint8_t attempts)
 
 bool Finder6M::clearInstantaneousCurrentPeak(uint8_t address, uint8_t attempts)
 {
-    return modbus6MWrite32(address, FINDER_6M_REG_INSTANTANEOUS_CURRENT_PEAK_100, 0, false, attempts);
+    return modbus6MWrite32(address, FINDER_6M_REG_INSTANTANEOUS_CURRENT_PEAK, 0, false, attempts);
 }
 
 bool Finder6M::clearActivePowerMax(uint8_t address, uint8_t attempts)
